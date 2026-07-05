@@ -12,6 +12,7 @@ return [
     'output_dir' => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data',
     'default_year' => 2026,
     'default_step_minutes' => 60,
+    'time_limit_seconds' => 300,
     'gzip' => true,
 
     'bodies' => [
@@ -29,4 +30,3 @@ return [
         'degree_in_sign' => 8,
     ],
 ];
-

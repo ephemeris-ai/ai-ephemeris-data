@@ -125,6 +125,15 @@ function ai_ephem_round(?float $value, int $precision): ?float
     return round($value, $precision);
 }
 
+function ai_ephem_refresh_time_limit(array $config): void
+{
+    $seconds = max(30, (int)($config['time_limit_seconds'] ?? 300));
+    if (function_exists('set_time_limit')) {
+        @set_time_limit($seconds);
+    }
+    @ini_set('max_execution_time', (string)$seconds);
+}
+
 function ai_ephem_sequence(array $selectedBodies, array $defs): string
 {
     $sequence = '';
@@ -232,6 +241,8 @@ function ai_ephem_close($handle, bool $gzip): void
 
 function ai_ephem_generate_day(DateTimeImmutable $day, int $stepMinutes, array $config): string
 {
+    ai_ephem_refresh_time_limit($config);
+
     $swetest = trim((string)$config['swetest_php']);
     $edir = trim((string)$config['ephemeris_dir']);
     if ($swetest === '' || !is_file($swetest)) {
@@ -242,6 +253,7 @@ function ai_ephem_generate_day(DateTimeImmutable $day, int $stepMinutes, array $
     }
 
     require_once $swetest;
+    ai_ephem_refresh_time_limit($config);
     if (!function_exists('swetest_calc')) {
         ai_ephem_fail("Loaded swetest.php, but swetest_calc() is not available.");
     }
@@ -265,6 +277,7 @@ function ai_ephem_generate_day(DateTimeImmutable $day, int $stepMinutes, array $
     $count = 0;
 
     while ($cursor < $end) {
+        ai_ephem_refresh_time_limit($config);
         $rows = swetest_calc([
             'date' => $cursor->format('j.n.Y'),
             'ut' => $cursor->format('H:i:s'),
@@ -292,6 +305,7 @@ $config = ai_ephem_config();
 if (isset($args['help'])) {
     echo "Usage:\n";
     echo "  php generator/generate.php --date=2026-01-01 --step=60\n";
+    echo "  php generator/generate.php --month=2026-01 --step=60\n";
     echo "  php generator/generate.php --year=2026 --step=10\n";
     exit(0);
 }
@@ -319,6 +333,23 @@ if (isset($args['date'])) {
     exit(0);
 }
 
+if (isset($args['month'])) {
+    $monthText = (string)$args['month'];
+    if (!preg_match('/^\d{4}-\d{2}$/', $monthText)) {
+        ai_ephem_fail("Invalid --month, expected YYYY-MM.");
+    }
+    $day = DateTimeImmutable::createFromFormat('!Y-m-d', $monthText . '-01', $tz);
+    if (!$day) {
+        ai_ephem_fail("Invalid --month, expected YYYY-MM.");
+    }
+    $end = $day->modify('+1 month');
+    while ($day < $end) {
+        ai_ephem_generate_day($day, $step, $config);
+        $day = $day->modify('+1 day');
+    }
+    exit(0);
+}
+
 $year = isset($args['year']) ? (int)$args['year'] : (int)$config['default_year'];
 if ($year < 1800 || $year > 2200) {
     ai_ephem_fail("Refusing broad generation outside 1800-2200 in this preview generator.");
@@ -329,4 +360,3 @@ while ($day < $end) {
     ai_ephem_generate_day($day, $step, $config);
     $day = $day->modify('+1 day');
 }
-
