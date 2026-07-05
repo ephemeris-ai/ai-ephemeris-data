@@ -23,15 +23,15 @@ data/
 
 Each line contains one UTC timestamp and all configured bodies for that timestamp.
 
-The current preview contains January 2026 generated in 60-minute steps:
+The current preview contains the full year 2026 generated in 60-minute steps:
 
 ```text
 data/2026/2026-01-01.jsonl.gz
 ...
-data/2026/2026-01-31.jsonl.gz
+data/2026/2026-12-31.jsonl.gz
 ```
 
-This first month is meant for format validation and practical testing, not as the final public cadence.
+This first year is meant for format validation and practical testing, not as the final public cadence.
 
 The default coordinate model is:
 
