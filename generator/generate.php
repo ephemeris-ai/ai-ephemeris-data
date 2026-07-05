@@ -322,6 +322,7 @@ if (isset($args['help'])) {
     echo "  php generator/generate.php --month=2026-01 --step=10\n";
     echo "  php generator/generate.php --year=2026 --step=60\n";
     echo "  php generator/generate.php --month=2026-01 --step=10 --cadence=10min\n";
+    echo "  php generator/generate.php --year=2026 --step=10 --output-dir=../ai-ephemeris-output/data\n";
     exit(0);
 }
 
@@ -336,6 +337,14 @@ if ($step < 1 || $step > 1440 || 1440 % $step !== 0) {
 $config['cadence'] = isset($args['cadence'])
     ? (string)$args['cadence']
     : (string)($config['default_cadence'] ?? '');
+
+if (isset($args['output-dir'])) {
+    $outputDir = trim((string)$args['output-dir']);
+    if ($outputDir === '') {
+        ai_ephem_fail("Invalid --output-dir, path cannot be empty.");
+    }
+    $config['output_dir'] = $outputDir;
+}
 
 if (isset($args['no-gzip'])) {
     $config['gzip'] = false;

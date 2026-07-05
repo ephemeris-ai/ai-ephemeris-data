@@ -9,7 +9,7 @@ return [
     'swetest_php' => getenv('AI_EPHEMERIS_SWETEST_PHP') ?: '',
     'ephemeris_dir' => getenv('AI_EPHEMERIS_EPHE_DIR') ?: '',
 
-    'output_dir' => dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data',
+    'output_dir' => getenv('AI_EPHEMERIS_OUTPUT_DIR') ?: dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data',
     'default_year' => 2026,
     'default_step_minutes' => 60,
     'default_cadence' => '',

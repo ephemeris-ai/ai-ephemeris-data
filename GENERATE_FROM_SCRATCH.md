@@ -124,6 +124,13 @@ php generator/generate.php --month=2026-01 --step=10
 
 This writes files under `data/10min/`.
 
+For broad fine-cadence ranges, write outside this repository so the default
+branch remains small:
+
+```bash
+php generator/generate.php --year=2026 --step=10 --output-dir=../ai-ephemeris-output/data
+```
+
 After generation, rebuild the dataset index:
 
 ```bash

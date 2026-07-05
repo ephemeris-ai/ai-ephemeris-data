@@ -12,7 +12,9 @@ This repository is intentionally independent from any production website. It doe
 
 ## Dataset model
 
-The archive is designed as daily JSON Lines files:
+The archive is designed as daily JSON Lines files. The default branch contains only
+a preview dataset; full historical ranges should be distributed separately so that
+the project ZIP stays small:
 
 ```text
 data/
@@ -45,7 +47,9 @@ data/60min/2027/2027-12-31.jsonl.gz
 - `10min` is the preferred AI lookup layer for ordinary chart-position use when the requested date is available.
 - `60min` is the compact orientation layer for broad lookup and coarse scans.
 
-The 10-minute layer is intentionally small in this preview. Generate a broader 10-minute range only after validating file sizes and lookup behavior.
+The 10-minute layer is intentionally small in this preview. Generate a broader 10-minute
+range only outside the repository, or publish it through a dedicated data channel.
+See [DATA_DISTRIBUTION.md](DATA_DISTRIBUTION.md).
 
 The default coordinate model is:
 
@@ -103,6 +107,7 @@ Example:
 
 ```bash
 php generator/generate.php --date=2026-01-01 --step=10
+php generator/generate.php --year=2026 --step=10 --output-dir=../ai-ephemeris-output/data
 php generator/validate.php data/10min/2026/2026-01-01.jsonl.gz
 php generator/build_index.php
 ```

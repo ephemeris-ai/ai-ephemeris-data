@@ -36,6 +36,7 @@ Alternatively use environment variables:
 ```bash
 AI_EPHEMERIS_SWETEST_PHP=/path/to/swetest.php
 AI_EPHEMERIS_EPHE_DIR=/path/to/ephe
+AI_EPHEMERIS_OUTPUT_DIR=/path/to/output/data
 ```
 
 For dates around 2026 and the default body set, the minimum practical `.se1` files are:
@@ -56,6 +57,12 @@ php generator/generate.php --date=2026-01-01 --step=10
 
 ```bash
 php generator/generate.php --year=2026 --step=60
+```
+
+For broad ranges, write outside the repository so the default branch stays small:
+
+```bash
+php generator/generate.php --year=2026 --step=10 --output-dir=../ai-ephemeris-output/data
 ```
 
 Output is written under a cadence directory:
