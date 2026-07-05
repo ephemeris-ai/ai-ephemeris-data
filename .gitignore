@@ -1,6 +1,7 @@
 generator/config.local.php
+ephe/
+runtime/
 *.log
 *.tmp
 Thumbs.db
 .DS_Store
-

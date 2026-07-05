@@ -4,6 +4,12 @@ This generator creates static daily JSONL ephemeris files.
 
 It does not call any public API. It reads a local `swetest.php` compatible runtime and local Swiss Ephemeris `.se1` files.
 
+For a complete setup from a clean checkout, see:
+
+```text
+../GENERATE_FROM_SCRATCH.md
+```
+
 ## Setup
 
 Copy:
@@ -32,6 +38,14 @@ AI_EPHEMERIS_SWETEST_PHP=/path/to/swetest.php
 AI_EPHEMERIS_EPHE_DIR=/path/to/ephe
 ```
 
+For dates around 2026 and the default body set, the minimum practical `.se1` files are:
+
+```text
+sepl_18.se1
+semo_18.se1
+seas_18.se1
+```
+
 ## Generate one day
 
 ```bash
@@ -57,4 +71,3 @@ php generator/validate.php data/2026/2026-01-01.jsonl.gz
 ```bash
 php generator/read_example.php data/2026/2026-01-01.jsonl.gz 3
 ```
-

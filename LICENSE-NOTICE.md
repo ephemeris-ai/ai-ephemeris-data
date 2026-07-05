@@ -6,6 +6,8 @@ The generator is intended to work with a Swiss Ephemeris compatible calculation 
 
 Do not assume that this notice grants rights to redistribute Swiss Ephemeris source files, binaries, or `.se1` files.
 
+The preview helper package in `packages/` is included to make local generation easier, but it does not include Swiss Ephemeris `.se1` data files.
+
 Before publishing a larger generated dataset or using it in a commercial or public service, verify the applicable license requirements for:
 
 - the calculation backend,
@@ -14,4 +16,3 @@ Before publishing a larger generated dataset or using it in a commercial or publ
 - any bundled helper package.
 
 This notice is not legal advice.
-

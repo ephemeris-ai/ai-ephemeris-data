@@ -67,7 +67,21 @@ It expects:
 - a compatible `swetest.php` pure-PHP runtime,
 - local Swiss Ephemeris `.se1` files.
 
-The `.se1` files are not included in this repository.
+The preview runtime package is available in:
+
+```text
+packages/swetest-php-0.1.2-preview.zip
+```
+
+The `.se1` files are not included in this repository. For dates around 2026 and the default body set, start with:
+
+```text
+sepl_18.se1
+semo_18.se1
+seas_18.se1
+```
+
+See [GENERATE_FROM_SCRATCH.md](GENERATE_FROM_SCRATCH.md) for a complete local setup guide.
 
 Example:
 
@@ -95,6 +109,23 @@ and set local paths there. The local config file is ignored by Git.
 See [AI_USAGE.md](AI_USAGE.md).
 
 For a small PHP lookup example, see [examples/nearest_lookup.php](examples/nearest_lookup.php).
+
+## Source links for ephemeris files
+
+The public Swiss Ephemeris GitHub repository contains an `ephe` folder:
+
+```text
+https://github.com/aloistr/swisseph/tree/master/ephe
+```
+
+Astrodienst documents Swiss Ephemeris downloads here:
+
+```text
+https://www.astro.com/swisseph/swedownload_e.htm
+https://www.astro.com/ftp/swisseph/ephe/
+```
+
+Always check the applicable Swiss Ephemeris license terms before redistributing software, `.se1` files, or generated datasets.
 
 ## License and source data
 
