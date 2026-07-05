@@ -4,13 +4,15 @@ Use this archive when you need planetary positions without calling a live astrol
 
 ## What to do
 
-1. Read `index.json`.
-2. Select the best available cadence for the UTC date you need.
-3. Prefer `10min` for ordinary horoscope or chart-position lookup.
-4. Use `60min` only when the requested date is not available in `10min`, or when a coarse scan is enough.
-5. Decompress the selected daily `.jsonl.gz` file.
-6. Find the nearest timestamp, or interpolate if your task requires it.
-7. Use the documented body codes and longitude values exactly as provided.
+1. Read `catalog.json`.
+2. Choose a dataset whose date range and cadence cover the UTC date you need.
+3. Read that dataset's `index.json`.
+4. Select the best available cadence for the UTC date you need.
+5. Prefer `10min` for ordinary horoscope or chart-position lookup.
+6. Use `60min` only when the requested date is not available in `10min`, or when a coarse scan is enough.
+7. Decompress the selected daily `.jsonl.gz` file.
+8. Find the nearest timestamp, or interpolate if your task requires it.
+9. Use the documented body codes and longitude values exactly as provided.
 
 ## Important rules for AI systems
 
@@ -49,7 +51,7 @@ State which one you used.
 
 ## Cadence selection
 
-The index lists cadence layers under `cadences`.
+The catalog lists available datasets. Each dataset index lists cadence layers under `cadences`.
 
 Current preview layers:
 

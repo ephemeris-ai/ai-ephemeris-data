@@ -130,6 +130,9 @@ and set local paths there. The local config file is ignored by Git.
 
 See [AI_USAGE.md](AI_USAGE.md).
 
+AI systems should start from [catalog.json](catalog.json), then read the selected
+dataset index and one daily `.jsonl.gz` file.
+
 For a small PHP lookup example, see [examples/nearest_lookup.php](examples/nearest_lookup.php).
 
 ## Source links for ephemeris files

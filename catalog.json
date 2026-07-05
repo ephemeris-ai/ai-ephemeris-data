@@ -1,0 +1,39 @@
+{
+  "schema_version": "1.0",
+  "project": "ai-ephemeris-data",
+  "purpose": "AI-readable static ephemeris dataset catalog",
+  "lookup_rule": "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then read that dataset index and one daily JSONL/GZIP file.",
+  "datasets": [
+    {
+      "id": "preview-main",
+      "status": "preview",
+      "repository": "https://github.com/ephemeris-ai/ai-ephemeris-data",
+      "index_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
+      "pages_index_url": "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
+      "base_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
+      "date_range": {
+        "start": "2025-01-01",
+        "end": "2027-12-31"
+      },
+      "cadences": [
+        {
+          "cadence": "10min",
+          "date_range": {
+            "start": "2026-01-01",
+            "end": "2026-01-31"
+          },
+          "recommended_use": "AI horoscope lookup preview"
+        },
+        {
+          "cadence": "60min",
+          "date_range": {
+            "start": "2025-01-01",
+            "end": "2027-12-31"
+          },
+          "recommended_use": "compact orientation and coarse lookup preview"
+        }
+      ]
+    }
+  ],
+  "large_dataset_policy": "Full historical ranges should be published outside the default branch, for example in data-only repositories, releases, or static object storage."
+}
