@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/ai-ephemeris-data/schema.json",
+  "title": "AI Ephemeris Data JSONL record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "time_utc",
+    "julian_day_ut",
+    "coordinate_system",
+    "bodies"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "time_utc": {
+      "type": "string",
+      "format": "date-time",
+      "description": "UTC timestamp in ISO 8601 format."
+    },
+    "julian_day_ut": {
+      "type": "number"
+    },
+    "coordinate_system": {
+      "type": "object",
+      "required": [
+        "frame",
+        "zodiac",
+        "coordinates",
+        "longitude_unit"
+      ],
+      "properties": {
+        "frame": {
+          "const": "geocentric"
+        },
+        "zodiac": {
+          "const": "tropical"
+        },
+        "coordinates": {
+          "const": "ecliptic"
+        },
+        "longitude_unit": {
+          "const": "degrees"
+        },
+        "position_type": {
+          "type": "string"
+        }
+      }
+    },
+    "bodies": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/body"
+      }
+    }
+  },
+  "$defs": {
+    "body": {
+      "type": "object",
+      "required": [
+        "name",
+        "longitude",
+        "latitude",
+        "speed_longitude",
+        "retrograde",
+        "zodiac"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "number",
+          "minimum": 0,
+          "exclusiveMaximum": 360
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "distance_au": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "speed_longitude": {
+          "type": "number"
+        },
+        "retrograde": {
+          "type": "boolean"
+        },
+        "zodiac": {
+          "type": "object",
+          "required": [
+            "sign_index",
+            "sign_code",
+            "degree_in_sign"
+          ],
+          "properties": {
+            "sign_index": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 12
+            },
+            "sign_code": {
+              "type": "string"
+            },
+            "degree_in_sign": {
+              "type": "number",
+              "minimum": 0,
+              "exclusiveMaximum": 30
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
