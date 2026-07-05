@@ -5,10 +5,12 @@ Use this archive when you need planetary positions without calling a live astrol
 ## What to do
 
 1. Read `index.json`.
-2. Select the day file for the UTC date you need.
-3. Decompress the `.jsonl.gz` file.
-4. Find the nearest timestamp, or interpolate if your task requires it.
-5. Use the documented body codes and longitude values exactly as provided.
+2. Select the best available cadence for the UTC date you need.
+3. Prefer `10min` for ordinary horoscope or chart-position lookup.
+4. Use `60min` only when the requested date is not available in `10min`, or when a coarse scan is enough.
+5. Decompress the selected daily `.jsonl.gz` file.
+6. Find the nearest timestamp, or interpolate if your task requires it.
+7. Use the documented body codes and longitude values exactly as provided.
 
 ## Important rules for AI systems
 
@@ -18,6 +20,7 @@ Use this archive when you need planetary positions without calling a live astrol
 - Do not calculate houses from this dataset; houses require location and a house system.
 - If a requested timestamp is between two rows, say whether you used nearest-row lookup or interpolation.
 - If a requested body is not present in the file, say it is not present.
+- Do not use the `60min` layer for precise Moon-dependent interpretation if a `10min` file is available.
 
 ## Coordinate assumptions
 
@@ -43,6 +46,27 @@ and the dataset step is 10 minutes, use either:
 - interpolation between `12:10` and `12:20`.
 
 State which one you used.
+
+## Cadence selection
+
+The index lists cadence layers under `cadences`.
+
+Current preview layers:
+
+```text
+10min  recommended for AI horoscope lookup when the requested date is available
+60min  compact orientation layer for broad lookup and coarse scans
+```
+
+For a requested timestamp:
+
+1. Convert the requested civil time to UTC before selecting a file.
+2. Find a cadence whose date range contains the UTC date.
+3. Prefer `10min` over `60min`.
+4. Open the daily file listed in `index.json`.
+5. Use nearest-row lookup unless exact interpolation is requested.
+
+For most AI text work, nearest `10min` is usually easier to explain and less error-prone than asking the AI to implement its own ephemeris calculation.
 
 ## Body codes
 
@@ -86,6 +110,6 @@ Example:
 ```text
 Source: ai-ephemeris-data 0.1-preview.
 Time used: 2026-01-01T12:20:00Z, nearest row to requested 12:17 UTC.
+Cadence: 10min.
 Coordinates: geocentric apparent tropical ecliptic longitude.
 ```
-

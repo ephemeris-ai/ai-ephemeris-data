@@ -6,11 +6,12 @@ Before publishing, run:
 
 ```bash
 php -l generator/generate.php
+php -l generator/build_index.php
 php -l generator/validate.php
 php -l generator/read_example.php
 php -l examples/nearest_lookup.php
 php -r '$files=["schema.json","index.json"]; foreach($files as $f){json_decode(file_get_contents($f), true); echo $f . ": " . (json_last_error()===JSON_ERROR_NONE ? "OK" : json_last_error_msg()) . PHP_EOL;}'
-php generator/validate.php data/2026/2026-01-01.jsonl.gz
+php generator/validate.php data/10min/2026/2026-01-01.jsonl.gz
 ```
 
 Search for private or production-specific text. Use your own local list of names, emails, domains, server paths, and development paths:

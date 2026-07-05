@@ -16,25 +16,36 @@ The archive is designed as daily JSON Lines files:
 
 ```text
 data/
-  2025/
-    2025-01-01.jsonl.gz
-  2026/
-    2026-01-01.jsonl.gz
-  2027/
-    2027-12-31.jsonl.gz
+  10min/
+    2026/
+      2026-01-01.jsonl.gz
+  60min/
+    2025/
+      2025-01-01.jsonl.gz
+    2026/
+      2026-01-01.jsonl.gz
+    2027/
+      2027-12-31.jsonl.gz
 ```
 
 Each line contains one UTC timestamp and all configured bodies for that timestamp.
 
-The current preview contains the full years 2025, 2026, and 2027 generated in 60-minute steps:
+The current preview contains two cadence layers:
 
 ```text
-data/2025/2025-01-01.jsonl.gz
+data/10min/2026/2026-01-01.jsonl.gz
 ...
-data/2027/2027-12-31.jsonl.gz
+data/10min/2026/2026-01-31.jsonl.gz
+
+data/60min/2025/2025-01-01.jsonl.gz
+...
+data/60min/2027/2027-12-31.jsonl.gz
 ```
 
-This three-year preview is meant for format validation and practical testing, not as the final public cadence.
+- `10min` is the preferred AI lookup layer for ordinary chart-position use when the requested date is available.
+- `60min` is the compact orientation layer for broad lookup and coarse scans.
+
+The 10-minute layer is intentionally small in this preview. Generate a broader 10-minute range only after validating file sizes and lookup behavior.
 
 The default coordinate model is:
 
@@ -91,8 +102,9 @@ See [GENERATE_FROM_SCRATCH.md](GENERATE_FROM_SCRATCH.md) for a complete local se
 Example:
 
 ```bash
-php generator/generate.php --date=2025-01-01 --step=60
-php generator/validate.php data/2025/2025-01-01.jsonl.gz
+php generator/generate.php --date=2026-01-01 --step=10
+php generator/validate.php data/10min/2026/2026-01-01.jsonl.gz
+php generator/build_index.php
 ```
 
 For local configuration, copy:

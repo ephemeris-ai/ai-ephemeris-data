@@ -6,7 +6,7 @@ if (PHP_SAPI !== 'cli') {
     exit(1);
 }
 
-$file = $argv[1] ?? __DIR__ . '/../data/2026/2026-01-01.jsonl.gz';
+$file = $argv[1] ?? __DIR__ . '/../data/10min/2026/2026-01-01.jsonl.gz';
 $requested = $argv[2] ?? '2026-01-01T12:17:00Z';
 $bodyCode = $argv[3] ?? 'Mo';
 
@@ -65,4 +65,3 @@ echo "Nearest:   " . $best['time_utc'] . " (delta {$bestDelta}s)" . PHP_EOL;
 echo "Body:      {$bodyCode} " . ($body['name'] ?? '') . PHP_EOL;
 echo "Longitude: " . ($body['longitude'] ?? '') . " deg" . PHP_EOL;
 echo "Sign:      " . ($body['zodiac']['sign_code'] ?? '') . " " . ($body['zodiac']['degree_in_sign'] ?? '') . PHP_EOL;
-

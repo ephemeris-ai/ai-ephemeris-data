@@ -204,8 +204,8 @@
     <article class="card">
       <h2>Preview data</h2>
       <p>
-        The current preview contains the full years 2025, 2026, and 2027 in 60-minute steps.
-        Larger cadence and date ranges should be generated only after validation.
+        The current preview has a compact 60-minute layer for 2025-2027
+        and a 10-minute AI lookup layer for January 2026.
       </p>
     </article>
   </section>
@@ -213,11 +213,11 @@
   <section class="card" style="margin-top: 16px;">
     <h2>Sample file</h2>
     <p>
-      Download or inspect the first current preview file:
-      <a href="./data/2025/2025-01-01.jsonl.gz">data/2025/2025-01-01.jsonl.gz</a>
+      Download or inspect a 10-minute AI lookup file:
+      <a href="./data/10min/2026/2026-01-01.jsonl.gz">data/10min/2026/2026-01-01.jsonl.gz</a>
     </p>
-    <pre><code>php generator/read_example.php data/2025/2025-01-01.jsonl.gz 1
-php examples/nearest_lookup.php data/2025/2025-01-01.jsonl.gz 2025-01-01T12:17:00Z Mo</code></pre>
+    <pre><code>php generator/read_example.php data/10min/2026/2026-01-01.jsonl.gz 1
+php examples/nearest_lookup.php data/10min/2026/2026-01-01.jsonl.gz 2026-01-01T12:17:00Z Mo</code></pre>
   </section>
 
   <section class="card" style="margin-top: 16px;">

@@ -91,19 +91,19 @@ return [
 ## 5. Generate one test day
 
 ```bash
-php generator/generate.php --date=2026-01-01 --step=60
+php generator/generate.php --date=2026-01-01 --step=10
 ```
 
 Validate it:
 
 ```bash
-php generator/validate.php data/2026/2026-01-01.jsonl.gz
+php generator/validate.php data/10min/2026/2026-01-01.jsonl.gz
 ```
 
 Read one line:
 
 ```bash
-php generator/read_example.php data/2026/2026-01-01.jsonl.gz 1
+php generator/read_example.php data/10min/2026/2026-01-01.jsonl.gz 1
 ```
 
 ## 6. Generate a larger range
@@ -114,7 +114,23 @@ For a month or year, start with a coarse step first:
 php generator/generate.php --year=2026 --step=60
 ```
 
-Only after validation should you generate a finer cadence such as 10, 5, or 2 minutes.
+This writes files under `data/60min/`.
+
+For a finer AI lookup layer, generate a smaller test range first:
+
+```bash
+php generator/generate.php --month=2026-01 --step=10
+```
+
+This writes files under `data/10min/`.
+
+After generation, rebuild the dataset index:
+
+```bash
+php generator/build_index.php
+```
+
+Only after validation should you generate a broader fine cadence such as 10, 5, or 2 minutes.
 
 ## 7. Notes for AI agents
 
@@ -123,4 +139,3 @@ Only after validation should you generate a finer cadence such as 10, 5, or 2 mi
 - Download `.se1` files only from a source whose license and provenance you can verify.
 - Keep all generated records in UTC.
 - Validate every generated file before using it.
-

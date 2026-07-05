@@ -8,7 +8,7 @@ if (PHP_SAPI !== 'cli') {
 
 $file = $argv[1] ?? '';
 if ($file === '' || !is_file($file)) {
-    fwrite(STDERR, "Usage: php generator/validate.php data/2026/2026-01-01.jsonl.gz\n");
+    fwrite(STDERR, "Usage: php generator/validate.php data/10min/2026/2026-01-01.jsonl.gz\n");
     exit(1);
 }
 
@@ -75,4 +75,3 @@ echo "First: " . ($first ?? '-') . "\n";
 echo "Last: " . ($last ?? '-') . "\n";
 echo "Errors: {$errors}\n";
 exit($errors === 0 ? 0 : 1);
-

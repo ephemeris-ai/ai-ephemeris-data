@@ -9,7 +9,7 @@ if (PHP_SAPI !== 'cli') {
 $file = $argv[1] ?? '';
 $limit = isset($argv[2]) ? max(1, (int)$argv[2]) : 3;
 if ($file === '' || !is_file($file)) {
-    fwrite(STDERR, "Usage: php generator/read_example.php data/2026/2026-01-01.jsonl.gz 3\n");
+    fwrite(STDERR, "Usage: php generator/read_example.php data/10min/2026/2026-01-01.jsonl.gz 3\n");
     exit(1);
 }
 
@@ -35,4 +35,3 @@ if ($gzip) {
 } else {
     fclose($handle);
 }
-

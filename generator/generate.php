@@ -134,6 +134,18 @@ function ai_ephem_refresh_time_limit(array $config): void
     @ini_set('max_execution_time', (string)$seconds);
 }
 
+function ai_ephem_cadence_key(int $stepMinutes, array $config): string
+{
+    $configured = trim((string)($config['cadence'] ?? ''));
+    if ($configured !== '') {
+        if (!preg_match('/^[a-z0-9][a-z0-9_-]*$/i', $configured)) {
+            ai_ephem_fail("Cadence must contain only letters, digits, underscore, or dash.");
+        }
+        return $configured;
+    }
+    return $stepMinutes . 'min';
+}
+
 function ai_ephem_sequence(array $selectedBodies, array $defs): string
 {
     $sequence = '';
@@ -262,11 +274,13 @@ function ai_ephem_generate_day(DateTimeImmutable $day, int $stepMinutes, array $
     $defs = ai_ephem_bodies();
     $sequence = ai_ephem_sequence($selectedBodies, $defs);
     $gzip = (bool)$config['gzip'];
+    $cadence = ai_ephem_cadence_key($stepMinutes, $config);
 
     $year = $day->format('Y');
     $date = $day->format('Y-m-d');
     $ext = $gzip ? '.jsonl.gz' : '.jsonl';
     $out = rtrim((string)$config['output_dir'], DIRECTORY_SEPARATOR . '/')
+        . DIRECTORY_SEPARATOR . $cadence
         . DIRECTORY_SEPARATOR . $year
         . DIRECTORY_SEPARATOR . $date . $ext;
 
@@ -305,8 +319,9 @@ $config = ai_ephem_config();
 if (isset($args['help'])) {
     echo "Usage:\n";
     echo "  php generator/generate.php --date=2026-01-01 --step=60\n";
-    echo "  php generator/generate.php --month=2026-01 --step=60\n";
-    echo "  php generator/generate.php --year=2026 --step=10\n";
+    echo "  php generator/generate.php --month=2026-01 --step=10\n";
+    echo "  php generator/generate.php --year=2026 --step=60\n";
+    echo "  php generator/generate.php --month=2026-01 --step=10 --cadence=10min\n";
     exit(0);
 }
 
@@ -318,6 +333,9 @@ if (isset($args['step'])) {
 if ($step < 1 || $step > 1440 || 1440 % $step !== 0) {
     ai_ephem_fail("Step must be a divisor of 1440 minutes.");
 }
+$config['cadence'] = isset($args['cadence'])
+    ? (string)$args['cadence']
+    : (string)($config['default_cadence'] ?? '');
 
 if (isset($args['no-gzip'])) {
     $config['gzip'] = false;
