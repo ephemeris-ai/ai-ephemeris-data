@@ -181,6 +181,7 @@
       <a class="button" href="https://github.com/ephemeris-ai/ai-ephemeris-data">GitHub repository</a>
       <a class="button secondary" href="./llms.txt">AI start file</a>
       <a class="button secondary" href="./AI_USAGE.md">AI usage guide</a>
+      <a class="button secondary" href="./MATCH_USAGE.md">Match usage</a>
       <a class="button secondary" href="./GENERATE_FROM_SCRATCH.md">Generate locally</a>
       <a class="button secondary" href="./catalog.json">Dataset catalog</a>
       <a class="button secondary" href="./index.json">Dataset index</a>
@@ -231,6 +232,15 @@
     </p>
     <pre><code>php generator/read_example.php data/10min/2026/2026-01-01.jsonl.gz 1
 php examples/nearest_lookup.php data/10min/2026/2026-01-01.jsonl.gz 2026-01-01T12:17:00Z Mo</code></pre>
+  </section>
+
+  <section class="card" style="margin-top: 16px;">
+    <h2>Match and event lookup</h2>
+    <p>
+      For a match or timed event, convert the scheduled local time to UTC, read
+      the matching daily file, and use the scheduled row or a short event window.
+      See <a href="./MATCH_USAGE.md">Match and Timed Event Usage</a>.
+    </p>
   </section>
 
   <section class="card" style="margin-top: 16px;">

@@ -61,6 +61,29 @@ and the dataset step is 10 minutes, use either:
 
 State which one you used.
 
+## Match or event start lookup
+
+For a match, election, event chart, or other timed situation:
+
+1. Convert the scheduled local civil time to UTC.
+2. Select a dataset that covers the UTC date.
+3. Prefer `10min` when available.
+4. Read the daily `.jsonl.gz` file for that UTC date.
+5. Use the nearest row for a simple lookup, or interpolate for stricter work.
+6. For a realistic event window, read multiple rows before and after the scheduled start.
+
+Example:
+
+```text
+match_time_local: 2026-07-06 14:00 Europe/Prague
+match_time_utc:   2026-07-06T12:00:00Z
+preferred_file:   data/10min/2026/2026-07-06.jsonl.gz
+preferred_row:    2026-07-06T12:00:00Z
+```
+
+If that daily file is not listed in the selected dataset index, say that the
+static archive does not currently contain that date/cadence.
+
 ## Cadence selection
 
 The catalog lists available datasets. Each dataset index lists cadence layers under `cadences`.
@@ -81,6 +104,17 @@ For a requested timestamp:
 5. Use nearest-row lookup unless exact interpolation is requested.
 
 For most AI text work, nearest `10min` is usually easier to explain and less error-prone than asking the AI to implement its own ephemeris calculation.
+
+## What this archive is not
+
+This archive is a position lookup layer. It does not currently include:
+
+- houses, Ascendant, or MC,
+- location-dependent calculations,
+- precomputed aspect event files,
+- a built-in match prediction engine.
+
+Aspect files and match-window helper examples are planned as optional layers.
 
 ## Body codes
 

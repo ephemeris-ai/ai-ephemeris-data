@@ -35,6 +35,9 @@ function ai_ephem_index_step_from_cadence(string $cadence): ?int
 
 function ai_ephem_index_recommended_use(string $cadence, ?int $step): string
 {
+    if ($step === 1) {
+        return 'high-resolution match-window and exact-time lookup layer';
+    }
     if ($step === 10) {
         return 'recommended for AI horoscope lookup and ordinary chart-position use';
     }
@@ -42,6 +45,32 @@ function ai_ephem_index_recommended_use(string $cadence, ?int $step): string
         return 'compact orientation layer for broad lookup and coarse scans';
     }
     return 'special cadence layer';
+}
+
+function ai_ephem_index_source_metadata(): array
+{
+    return [
+        'ephemeris_source' => 'Swiss Ephemeris compatible calculations',
+        'runtime' => 'swetest.php preview runtime',
+        'zodiac' => 'tropical',
+        'ayanamsa' => null,
+        'frame' => 'geocentric',
+        'coordinates' => 'ecliptic',
+        'position_type' => 'apparent',
+        'time_scale' => 'UTC input, Julian Day UT output',
+        'node_codes' => [
+            'Nn' => 'mean North Node',
+            'Nt' => 'true North Node',
+        ],
+        'lilith_codes' => [
+            'Ll' => 'mean lunar apogee / mean Lilith',
+            'Lt' => 'osculating lunar apogee / true Lilith',
+        ],
+        'special_points' => [
+            'Wa' => 'Waldemath',
+            'Se' => 'Selena / White Moon',
+        ],
+    ];
 }
 
 $files = [];
@@ -118,6 +147,7 @@ foreach ($files as $entry) {
 }
 
 $index['status'] = 'preview';
+$index['source'] = ai_ephem_index_source_metadata();
 $index['date_range'] = [
     'start' => $dateStart,
     'end' => $dateEnd,
@@ -139,4 +169,3 @@ echo "index_files=" . count($files)
     . " start=" . ($dateStart ?? '')
     . " end=" . ($dateEnd ?? '')
     . "\n";
-

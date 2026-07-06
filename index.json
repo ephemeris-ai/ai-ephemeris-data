@@ -11,6 +11,28 @@
         "longitude_unit": "degrees",
         "position_type": "apparent"
     },
+    "source": {
+        "ephemeris_source": "Swiss Ephemeris compatible calculations",
+        "runtime": "swetest.php preview runtime",
+        "zodiac": "tropical",
+        "ayanamsa": null,
+        "frame": "geocentric",
+        "coordinates": "ecliptic",
+        "position_type": "apparent",
+        "time_scale": "UTC input, Julian Day UT output",
+        "node_codes": {
+            "Nn": "mean North Node",
+            "Nt": "true North Node"
+        },
+        "lilith_codes": {
+            "Ll": "mean lunar apogee / mean Lilith",
+            "Lt": "osculating lunar apogee / true Lilith"
+        },
+        "special_points": {
+            "Wa": "Waldemath",
+            "Se": "Selena / White Moon"
+        }
+    },
     "bodies": [
         {
             "code": "So",

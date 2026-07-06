@@ -65,6 +65,14 @@ The default coordinate model is:
 - longitude unit: degrees, normalized to 0 <= longitude < 360
 - no houses, no Ascendant, no MC, no birth-place dependent data
 
+Recommended cadence policy:
+
+- `60min`: compact orientation layer for broad scans.
+- `10min`: primary AI lookup layer for ordinary chart-position use and match starts.
+- `1min`: planned optional high-resolution layer for exact event windows.
+
+Planned optional extensions include daily aspect event files and match-window helper examples.
+
 ## First supported body set
 
 The planned public body codes are:

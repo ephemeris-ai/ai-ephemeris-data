@@ -3,6 +3,38 @@
   "project": "ai-ephemeris-data",
   "purpose": "AI-readable static ephemeris dataset catalog",
   "lookup_rule": "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then read that dataset index and one daily JSONL/GZIP file.",
+  "coordinate_model": {
+    "time_scale": "UTC input, Julian Day UT output",
+    "frame": "geocentric",
+    "zodiac": "tropical",
+    "coordinates": "ecliptic",
+    "longitude_unit": "degrees",
+    "position_type": "apparent",
+    "ayanamsa": null,
+    "location_dependent_values": false
+  },
+  "recommended_cadence_policy": [
+    {
+      "cadence": "60min",
+      "status": "compact orientation layer",
+      "use": "broad daily overview and coarse scans"
+    },
+    {
+      "cadence": "10min",
+      "status": "primary AI lookup layer",
+      "use": "ordinary chart-position lookup and match start windows"
+    },
+    {
+      "cadence": "1min",
+      "status": "planned optional high-resolution layer",
+      "use": "exact-time match windows and final checks"
+    }
+  ],
+  "planned_extensions": [
+    "daily aspect event files",
+    "match-window helper examples",
+    "larger generated historical ranges outside the default branch"
+  ],
   "datasets": [
     {
       "id": "examples-main",

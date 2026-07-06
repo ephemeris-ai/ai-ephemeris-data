@@ -25,6 +25,15 @@ Lookup rule for AI agents:
 4. Download only the needed daily .jsonl.gz file.
 5. Use nearest-row lookup or interpolation, and say which method was used.
 
+For a match or timed event:
+
+- Convert local civil time to UTC first.
+- Prefer the 10min layer when available.
+- Read the daily file for the UTC date.
+- Use one row for the scheduled start, or several rows for a realistic event window.
+- If the requested day is not listed in the dataset index, say the archive does
+  not currently contain that date/cadence.
+
 Default coordinate model:
 
 - UTC timestamps
@@ -42,5 +51,7 @@ Important:
 - Do not guess planetary positions when a matching static file exists.
 - Do not treat local civil time as UTC.
 - Do not calculate houses from this dataset.
+- Do not claim that aspect-event files or match-window helper files exist until
+  they are listed in catalog.json.
 - The main branch contains examples only; full ranges are listed in catalog.json
   when available and are distributed outside the default branch.
