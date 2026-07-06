@@ -1,0 +1,46 @@
+# AI Ephemeris Data
+
+AI Ephemeris Data is a static ephemeris archive for AI agents and tools that
+need documented planetary positions without calling a live calculation API.
+
+Start here:
+
+- Dataset catalog:
+  https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/catalog.json
+
+- Human and AI usage guide:
+  https://github.com/ephemeris-ai/ai-ephemeris-data/blob/main/AI_USAGE.md
+
+- JSON schema:
+  https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/schema.json
+
+- Project page:
+  https://ephemeris-ai.github.io/ai-ephemeris-data/
+
+Lookup rule for AI agents:
+
+1. Read catalog.json first.
+2. Choose a dataset covering the requested UTC date and cadence.
+3. Read that dataset's index.json.
+4. Download only the needed daily .jsonl.gz file.
+5. Use nearest-row lookup or interpolation, and say which method was used.
+
+Default coordinate model:
+
+- UTC timestamps
+- Julian Day UT
+- geocentric apparent tropical ecliptic longitude and latitude
+- degrees normalized to 0 <= longitude < 360
+- no houses, no Ascendant, no MC, no location-specific values
+
+Body codes:
+
+So Mo Me Ve Ma Ju Sa Ur Ne Pl Nn Nt Ll Lt Ch Ph Ce Pa Jo Va Wa Se
+
+Important:
+
+- Do not guess planetary positions when a matching static file exists.
+- Do not treat local civil time as UTC.
+- Do not calculate houses from this dataset.
+- The main branch contains examples only; full ranges are listed in catalog.json
+  when available and are distributed outside the default branch.

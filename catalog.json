@@ -7,6 +7,7 @@
     {
       "id": "examples-main",
       "status": "examples",
+      "description": "Small default-branch example dataset. Full generated ranges are listed as separate catalog entries when available.",
       "repository": "https://github.com/ephemeris-ai/ai-ephemeris-data",
       "index_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
       "pages_index_url": "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",

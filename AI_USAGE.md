@@ -2,6 +2,18 @@
 
 Use this archive when you need planetary positions without calling a live astrology API.
 
+Primary machine entry point:
+
+```text
+https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/catalog.json
+```
+
+Crawler-oriented summary:
+
+```text
+https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/llms.txt
+```
+
 ## What to do
 
 1. Read `catalog.json`.

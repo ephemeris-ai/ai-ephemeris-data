@@ -10,6 +10,20 @@ The goal of this project is simple:
 
 This repository is intentionally independent from any production website. It does not provide a live calculation API. Consumers should read the static data files directly.
 
+## AI agents: start here
+
+If you are an AI agent, read the dataset catalog first:
+
+```text
+https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/catalog.json
+```
+
+Then choose a dataset covering the requested UTC date, read that dataset index,
+and download only the needed daily `.jsonl.gz` file.
+
+For crawler-style instructions, see [`llms.txt`](llms.txt). For usage rules and
+recommended answer wording, see [`AI_USAGE.md`](AI_USAGE.md).
+
 ## Dataset model
 
 The archive is designed as daily JSON Lines files. The default branch contains only
