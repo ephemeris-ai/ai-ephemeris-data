@@ -10,14 +10,10 @@ Thumbs.db
 # the repository, or in a dedicated release/storage channel.
 /data/**/*
 
-# Keep only the intentionally published preview dataset tracked in Git.
+# Keep only the intentionally published example files tracked in Git.
 !/data/10min/
 !/data/10min/2026/
-!/data/10min/2026/2026-01-*.jsonl.gz
+!/data/10min/2026/2026-01-01.jsonl.gz
 !/data/60min/
-!/data/60min/2025/
-!/data/60min/2025/*.jsonl.gz
 !/data/60min/2026/
-!/data/60min/2026/*.jsonl.gz
-!/data/60min/2027/
-!/data/60min/2027/*.jsonl.gz
+!/data/60min/2026/2026-01-01.jsonl.gz

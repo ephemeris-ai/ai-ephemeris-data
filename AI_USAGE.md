@@ -53,17 +53,17 @@ State which one you used.
 
 The catalog lists available datasets. Each dataset index lists cadence layers under `cadences`.
 
-Current preview layers:
+Current default-branch example layers:
 
 ```text
-10min  recommended for AI horoscope lookup when the requested date is available
-60min  compact orientation layer for broad lookup and coarse scans
+10min  example of the preferred AI horoscope lookup cadence
+60min  example of the compact orientation cadence
 ```
 
 For a requested timestamp:
 
 1. Convert the requested civil time to UTC before selecting a file.
-2. Find a cadence whose date range contains the UTC date.
+2. Find a catalog dataset and cadence whose date range contains the UTC date.
 3. Prefer `10min` over `60min`.
 4. Open the daily file listed in `index.json`.
 5. Use nearest-row lookup unless exact interpolation is requested.

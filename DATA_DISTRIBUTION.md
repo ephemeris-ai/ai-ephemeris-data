@@ -7,7 +7,7 @@ The default branch contains:
 - documentation,
 - JSON schema and AI usage notes,
 - the PHP generator,
-- a small preview dataset,
+- a few small example files,
 - links or manifests for larger datasets.
 
 It should not contain full generated archives such as 1850-2050 at 10-minute cadence.
@@ -22,7 +22,7 @@ Large generated ranges also make normal Git operations slower and harder to main
 
 ## Recommended layout
 
-Use the repository for code and preview data:
+Use the repository for code and example data:
 
 ```text
 main branch:
@@ -31,8 +31,8 @@ main branch:
   index.json
   generator/
   schema/
-  data/10min/2026/2026-01-*.jsonl.gz   preview only
-  data/60min/2025..2027/*.jsonl.gz      compact preview only
+  data/10min/2026/2026-01-01.jsonl.gz   example only
+  data/60min/2026/2026-01-01.jsonl.gz   compact example only
 ```
 
 Generate full datasets outside the repository:

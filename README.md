@@ -13,8 +13,8 @@ This repository is intentionally independent from any production website. It doe
 ## Dataset model
 
 The archive is designed as daily JSON Lines files. The default branch contains only
-a preview dataset; full historical ranges should be distributed separately so that
-the project ZIP stays small:
+small example files; full historical ranges are listed through `catalog.json` and
+distributed outside `main` so that the project ZIP stays small:
 
 ```text
 data/
@@ -22,33 +22,24 @@ data/
     2026/
       2026-01-01.jsonl.gz
   60min/
-    2025/
-      2025-01-01.jsonl.gz
     2026/
       2026-01-01.jsonl.gz
-    2027/
-      2027-12-31.jsonl.gz
 ```
 
 Each line contains one UTC timestamp and all configured bodies for that timestamp.
 
-The current preview contains two cadence layers:
+The current `main` branch contains two example files:
 
 ```text
 data/10min/2026/2026-01-01.jsonl.gz
-...
-data/10min/2026/2026-01-31.jsonl.gz
-
-data/60min/2025/2025-01-01.jsonl.gz
-...
-data/60min/2027/2027-12-31.jsonl.gz
+data/60min/2026/2026-01-01.jsonl.gz
 ```
 
-- `10min` is the preferred AI lookup layer for ordinary chart-position use when the requested date is available.
-- `60min` is the compact orientation layer for broad lookup and coarse scans.
+- `10min` demonstrates the preferred AI lookup layer for ordinary chart-position use.
+- `60min` demonstrates a compact orientation layer for broad lookup and coarse scans.
 
-The 10-minute layer is intentionally small in this preview. Generate a broader 10-minute
-range only outside the repository, or publish it through a dedicated data channel.
+The full generated ranges are intentionally kept out of `main`. Generate broader
+ranges outside the repository, or publish them through a dedicated data channel.
 See [DATA_DISTRIBUTION.md](DATA_DISTRIBUTION.md).
 
 The default coordinate model is:
@@ -93,7 +84,7 @@ The preview runtime package is available in:
 packages/swetest-php-0.1.2-preview.zip
 ```
 
-The `.se1` files are not included in this repository. For dates around 2025-2027 and the default body set, start with:
+The `.se1` files are not included in this repository. For dates around 2026 and the default body set, start with:
 
 ```text
 sepl_18.se1
@@ -131,7 +122,8 @@ and set local paths there. The local config file is ignored by Git.
 See [AI_USAGE.md](AI_USAGE.md).
 
 AI systems should start from [catalog.json](catalog.json), then read the selected
-dataset index and one daily `.jsonl.gz` file.
+dataset index and one daily `.jsonl.gz` file. The default-branch files are examples
+only; generated datasets appear as separate catalog entries.
 
 For a small PHP lookup example, see [examples/nearest_lookup.php](examples/nearest_lookup.php).
 

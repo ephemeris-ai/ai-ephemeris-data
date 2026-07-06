@@ -5,32 +5,32 @@
   "lookup_rule": "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then read that dataset index and one daily JSONL/GZIP file.",
   "datasets": [
     {
-      "id": "preview-main",
-      "status": "preview",
+      "id": "examples-main",
+      "status": "examples",
       "repository": "https://github.com/ephemeris-ai/ai-ephemeris-data",
       "index_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
       "pages_index_url": "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
       "base_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
       "date_range": {
-        "start": "2025-01-01",
-        "end": "2027-12-31"
+        "start": "2026-01-01",
+        "end": "2026-01-01"
       },
       "cadences": [
         {
           "cadence": "10min",
           "date_range": {
             "start": "2026-01-01",
-            "end": "2026-01-31"
+            "end": "2026-01-01"
           },
-          "recommended_use": "AI horoscope lookup preview"
+          "recommended_use": "single-day example file"
         },
         {
           "cadence": "60min",
           "date_range": {
-            "start": "2025-01-01",
-            "end": "2027-12-31"
+            "start": "2026-01-01",
+            "end": "2026-01-01"
           },
-          "recommended_use": "compact orientation and coarse lookup preview"
+          "recommended_use": "single-day compact example file"
         }
       ]
     }
