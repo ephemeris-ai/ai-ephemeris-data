@@ -22,14 +22,18 @@ Lookup rule for AI agents:
 1. Read catalog.json first.
 2. Choose a dataset covering the requested UTC date and cadence.
 3. Read that dataset's index.json.
-4. Download only the needed daily .jsonl.gz file.
-5. Use nearest-row lookup or interpolation, and say which method was used.
+4. Follow the dataset storage rule. Example datasets may expose a daily
+   .jsonl.gz file directly; generated ranges may use monthly ZIP archives.
+5. For monthly ZIP datasets, read monthly_index.json, download the matching
+   month archive, then open the requested daily .jsonl.gz file inside it.
+6. Use nearest-row lookup or interpolation, and say which method was used.
 
 For a match or timed event:
 
 - Convert local civil time to UTC first.
 - Prefer the 10min layer when available.
-- Read the daily file for the UTC date.
+- Read the daily file for the UTC date, either directly or from the matching
+  monthly ZIP archive.
 - Use one row for the scheduled start, or several rows for a realistic event window.
 - If the requested day is not listed in the dataset index, say the archive does
   not currently contain that date/cadence.

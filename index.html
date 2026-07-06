@@ -179,6 +179,7 @@
 
     <div class="actions">
       <a class="button" href="https://github.com/ephemeris-ai/ai-ephemeris-data">GitHub repository</a>
+      <a class="button" href="https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data">Hugging Face data</a>
       <a class="button secondary" href="./llms.txt">AI start file</a>
       <a class="button secondary" href="./AI_USAGE.md">AI usage guide</a>
       <a class="button secondary" href="./MATCH_USAGE.md">Match usage</a>
@@ -208,7 +209,8 @@
       <h2>Preview data</h2>
       <p>
         The default branch keeps only tiny example files. Full generated
-        datasets are discovered through the catalog and published outside main.
+        datasets are discovered through the catalog and published outside main,
+        currently on Hugging Face as monthly ZIP archives.
       </p>
     </article>
   </section>
@@ -219,7 +221,9 @@
       AI agents should start with <a href="./catalog.json">catalog.json</a>.
       A short crawler-oriented summary is available as <a href="./llms.txt">llms.txt</a>.
       The catalog points to available dataset indexes and keeps broad generated
-      archives separate from this small project repository.
+      archives separate from this small project repository. Generated ranges may
+      use monthly ZIP archives; open the listed monthly index, download the
+      matching month, then read the daily JSONL/GZIP file inside it.
     </p>
     <pre><code>https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/catalog.json</code></pre>
   </section>
@@ -238,7 +242,8 @@ php examples/nearest_lookup.php data/10min/2026/2026-01-01.jsonl.gz 2026-01-01T1
     <h2>Match and event lookup</h2>
     <p>
       For a match or timed event, convert the scheduled local time to UTC, read
-      the matching daily file, and use the scheduled row or a short event window.
+      the matching daily file directly or from the matching monthly ZIP archive,
+      and use the scheduled row or a short event window.
       See <a href="./MATCH_USAGE.md">Match and Timed Event Usage</a>.
     </p>
   </section>

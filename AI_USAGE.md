@@ -22,9 +22,10 @@ https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/llms.txt
 4. Select the best available cadence for the UTC date you need.
 5. Prefer `10min` for ordinary horoscope or chart-position lookup.
 6. Use `60min` only when the requested date is not available in `10min`, or when a coarse scan is enough.
-7. Decompress the selected daily `.jsonl.gz` file.
-8. Find the nearest timestamp, or interpolate if your task requires it.
-9. Use the documented body codes and longitude values exactly as provided.
+7. Follow the dataset storage rule. If `storage` is `monthly_zip_archives`, read `monthly_index.json`, download the matching monthly ZIP, and open the requested daily `.jsonl.gz` file inside it.
+8. Decompress the selected daily `.jsonl.gz` file.
+9. Find the nearest timestamp, or interpolate if your task requires it.
+10. Use the documented body codes and longitude values exactly as provided.
 
 ## Important rules for AI systems
 
@@ -68,7 +69,7 @@ For a match, election, event chart, or other timed situation:
 1. Convert the scheduled local civil time to UTC.
 2. Select a dataset that covers the UTC date.
 3. Prefer `10min` when available.
-4. Read the daily `.jsonl.gz` file for that UTC date.
+4. If the selected dataset uses monthly ZIP archives, read `monthly_index.json`, download the matching month, and open the daily `.jsonl.gz` file inside it. If the dataset exposes daily files directly, read the daily file from `index.json`.
 5. Use the nearest row for a simple lookup, or interpolate for stricter work.
 6. For a realistic event window, read multiple rows before and after the scheduled start.
 
@@ -78,6 +79,7 @@ Example:
 match_time_local: 2026-07-06 14:00 Europe/Prague
 match_time_utc:   2026-07-06T12:00:00Z
 preferred_file:   data/10min/2026/2026-07-06.jsonl.gz
+monthly_archive:  datasets/10min-2020-2030/monthly/2026/2026-07.zip
 preferred_row:    2026-07-06T12:00:00Z
 ```
 
@@ -100,7 +102,7 @@ For a requested timestamp:
 1. Convert the requested civil time to UTC before selecting a file.
 2. Find a catalog dataset and cadence whose date range contains the UTC date.
 3. Prefer `10min` over `60min`.
-4. Open the daily file listed in `index.json`.
+4. Open the daily file listed in `index.json`, or for monthly ZIP datasets, open the matching archive from `monthly_index.json` and read the daily file inside it.
 5. Use nearest-row lookup unless exact interpolation is requested.
 
 For most AI text work, nearest `10min` is usually easier to explain and less error-prone than asking the AI to implement its own ephemeris calculation.

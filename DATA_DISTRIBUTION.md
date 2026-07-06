@@ -51,12 +51,32 @@ AI_EPHEMERIS_OUTPUT_DIR=../ai-ephemeris-output/data php generator/generate.php -
 
 For a broad public archive, use one of these channels:
 
-1. GitHub Releases with yearly or monthly archives.
-2. A separate data-only repository, if the size stays reasonable.
-3. Object storage or static hosting for direct daily file URLs.
+1. Hugging Face Dataset repositories with monthly ZIP archives.
+2. GitHub Releases with yearly or monthly archives.
+3. A separate data-only repository, if the size stays reasonable.
+4. Object storage or static hosting for direct daily file URLs.
 
 The AI-facing `index.json` can then point to those external assets without making
 the source repository itself huge.
+
+The preferred public channel for generated ranges is Hugging Face. Store one
+month per ZIP archive, for example:
+
+```text
+datasets/10min-2020-2030/monthly/2026/2026-07.zip
+```
+
+Inside the ZIP, keep the daily files:
+
+```text
+2026-07-01.jsonl.gz
+2026-07-02.jsonl.gz
+...
+2026-07-31.jsonl.gz
+```
+
+This avoids thousands of small Git LFS objects and still lets AI tools download
+only the month needed for a requested date.
 
 ## Suggested cadence policy
 
@@ -64,5 +84,5 @@ the source repository itself huge.
 - `10min`: useful for ordinary chart-position lookup.
 - `2min` or finer: publish only when there is a clear use case, because size grows quickly.
 
-For AI lookup, daily `.jsonl.gz` files are a good compromise: an AI or tool can download
-one requested day instead of a whole year, while still avoiding millions of tiny files.
+For AI lookup, daily `.jsonl.gz` records remain the internal unit. For public
+large-range distribution, package those daily files into monthly ZIP archives.

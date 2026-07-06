@@ -10,7 +10,9 @@ It is not a prediction engine. It provides planetary positions for UTC timestamp
 1. Start with `catalog.json`.
 2. Pick a dataset covering the UTC date.
 3. Pick the best cadence available.
-4. Download the daily `.jsonl.gz` file.
+4. Follow the dataset storage rule. For monthly ZIP datasets, open
+   `monthly_index.json`, download the matching month archive, and read the daily
+   `.jsonl.gz` file inside it.
 5. Use the scheduled start row, nearest row, or interpolation.
 6. Optionally inspect a window before and after the event.
 
@@ -20,6 +22,7 @@ It is not a prediction engine. It provides planetary positions for UTC timestamp
 match_time_local: 2026-07-06 14:00 Europe/Prague
 match_time_utc:   2026-07-06T12:00:00Z
 needed_file:      data/10min/2026/2026-07-06.jsonl.gz
+monthly_archive:  datasets/10min-2020-2030/monthly/2026/2026-07.zip
 preferred_row:    2026-07-06T12:00:00Z
 ```
 

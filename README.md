@@ -18,15 +18,17 @@ If you are an AI agent, read the dataset catalog first:
 https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/catalog.json
 ```
 
-Then choose a dataset covering the requested UTC date, read that dataset index,
-and download only the needed daily `.jsonl.gz` file.
+Then choose a dataset covering the requested UTC date and follow its storage
+rule. Example datasets may expose daily `.jsonl.gz` files directly. Generated
+Hugging Face ranges use monthly ZIP archives that contain the daily
+`.jsonl.gz` files.
 
 For crawler-style instructions, see [`llms.txt`](llms.txt). For usage rules and
 recommended answer wording, see [`AI_USAGE.md`](AI_USAGE.md).
 
 ## Dataset model
 
-The archive is designed as daily JSON Lines files. The default branch contains only
+The archive record format is daily JSON Lines. The default branch contains only
 small example files; full historical ranges are listed through `catalog.json` and
 distributed outside `main` so that the project ZIP stays small:
 
@@ -41,6 +43,21 @@ data/
 ```
 
 Each line contains one UTC timestamp and all configured bodies for that timestamp.
+
+Generated public ranges are distributed on Hugging Face as monthly ZIP archives.
+Inside each monthly ZIP are the same daily `.jsonl.gz` files. This avoids
+thousands of tiny Git LFS objects while keeping lookup reasonably small:
+
+```text
+datasets/10min-2020-2030/monthly/2026/2026-07.zip
+  2026-07-01.jsonl.gz
+  2026-07-02.jsonl.gz
+  ...
+  2026-07-31.jsonl.gz
+```
+
+For generated ranges, read the dataset `monthly_index.json`, download the
+matching monthly archive, then open the daily file inside it.
 
 The current `main` branch contains two example files:
 
@@ -144,8 +161,11 @@ and set local paths there. The local config file is ignored by Git.
 See [AI_USAGE.md](AI_USAGE.md).
 
 AI systems should start from [catalog.json](catalog.json), then read the selected
-dataset index and one daily `.jsonl.gz` file. The default-branch files are examples
-only; generated datasets appear as separate catalog entries.
+dataset index. For direct example datasets, open one daily `.jsonl.gz` file. For
+generated Hugging Face datasets, open `monthly_index.json`, download the matching
+monthly ZIP archive, then read the requested daily `.jsonl.gz` file inside it.
+The default-branch files are examples only; generated datasets appear as separate
+catalog entries.
 
 For a small PHP lookup example, see [examples/nearest_lookup.php](examples/nearest_lookup.php).
 
