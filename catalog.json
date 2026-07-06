@@ -1,72 +1,95 @@
-{
-  "schema_version": "1.0",
-  "project": "ai-ephemeris-data",
-  "purpose": "AI-readable static ephemeris dataset catalog",
-  "lookup_rule": "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then read that dataset index and one daily JSONL/GZIP file.",
-  "coordinate_model": {
-    "time_scale": "UTC input, Julian Day UT output",
-    "frame": "geocentric",
-    "zodiac": "tropical",
-    "coordinates": "ecliptic",
-    "longitude_unit": "degrees",
-    "position_type": "apparent",
-    "ayanamsa": null,
-    "location_dependent_values": false
-  },
-  "recommended_cadence_policy": [
-    {
-      "cadence": "60min",
-      "status": "compact orientation layer",
-      "use": "broad daily overview and coarse scans"
-    },
-    {
-      "cadence": "10min",
-      "status": "primary AI lookup layer",
-      "use": "ordinary chart-position lookup and match start windows"
-    },
-    {
-      "cadence": "1min",
-      "status": "planned optional high-resolution layer",
-      "use": "exact-time match windows and final checks"
-    }
-  ],
-  "planned_extensions": [
-    "daily aspect event files",
-    "match-window helper examples",
-    "larger generated historical ranges outside the default branch"
-  ],
-  "datasets": [
-    {
-      "id": "examples-main",
-      "status": "examples",
-      "description": "Small default-branch example dataset. Full generated ranges are listed as separate catalog entries when available.",
-      "repository": "https://github.com/ephemeris-ai/ai-ephemeris-data",
-      "index_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
-      "pages_index_url": "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
-      "base_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
-      "date_range": {
-        "start": "2026-01-01",
-        "end": "2026-01-01"
-      },
-      "cadences": [
-        {
-          "cadence": "10min",
-          "date_range": {
-            "start": "2026-01-01",
-            "end": "2026-01-01"
-          },
-          "recommended_use": "single-day example file"
-        },
-        {
-          "cadence": "60min",
-          "date_range": {
-            "start": "2026-01-01",
-            "end": "2026-01-01"
-          },
-          "recommended_use": "single-day compact example file"
-        }
-      ]
-    }
-  ],
-  "large_dataset_policy": "Full historical ranges should be published outside the default branch, for example in data-only repositories, releases, or static object storage."
+﻿{
+    "schema_version":  "1.0",
+    "project":  "ai-ephemeris-data",
+    "purpose":  "AI-readable static ephemeris dataset catalog",
+    "lookup_rule":  "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then read that dataset index and one daily JSONL/GZIP file.",
+    "coordinate_model":  {
+                             "time_scale":  "UTC input, Julian Day UT output",
+                             "frame":  "geocentric",
+                             "zodiac":  "tropical",
+                             "coordinates":  "ecliptic",
+                             "longitude_unit":  "degrees",
+                             "position_type":  "apparent",
+                             "ayanamsa":  null,
+                             "location_dependent_values":  false
+                         },
+    "recommended_cadence_policy":  [
+                                       {
+                                           "cadence":  "60min",
+                                           "status":  "compact orientation layer",
+                                           "use":  "broad daily overview and coarse scans"
+                                       },
+                                       {
+                                           "cadence":  "10min",
+                                           "status":  "primary AI lookup layer",
+                                           "use":  "ordinary chart-position lookup and match start windows"
+                                       },
+                                       {
+                                           "cadence":  "1min",
+                                           "status":  "planned optional high-resolution layer",
+                                           "use":  "exact-time match windows and final checks"
+                                       }
+                                   ],
+    "planned_extensions":  [
+                               "daily aspect event files",
+                               "match-window helper examples",
+                               "larger generated historical ranges outside the default branch"
+                           ],
+    "datasets":  [
+                     {
+                         "id":  "examples-main",
+                         "status":  "examples",
+                         "description":  "Small default-branch example dataset. Full generated ranges are listed as separate catalog entries when available.",
+                         "repository":  "https://github.com/ephemeris-ai/ai-ephemeris-data",
+                         "index_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
+                         "pages_index_url":  "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
+                         "base_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
+                         "date_range":  {
+                                            "start":  "2026-01-01",
+                                            "end":  "2026-01-01"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2026-01-01",
+                                                                 "end":  "2026-01-01"
+                                                             },
+                                              "recommended_use":  "single-day example file"
+                                          },
+                                          {
+                                              "cadence":  "60min",
+                                              "date_range":  {
+                                                                 "start":  "2026-01-01",
+                                                                 "end":  "2026-01-01"
+                                                             },
+                                              "recommended_use":  "single-day compact example file"
+                                          }
+                                      ]
+                     },
+                     {
+                         "id":  "10min-2020-2030",
+                         "status":  "generated",
+                         "description":  "Generated 10-minute ephemeris dataset for 2020-01-01 through 2030-12-31 UTC.",
+                         "repository":  "https://github.com/ephemeris-ai/ai-ephemeris-data",
+                         "branch":  "data-10min-2020-2030",
+                         "index_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/data-10min-2020-2030/index.json",
+                         "base_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/data-10min-2020-2030/",
+                         "date_range":  {
+                                            "start":  "2020-01-01",
+                                            "end":  "2030-12-31"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2020-01-01",
+                                                                 "end":  "2030-12-31"
+                                                             },
+                                              "recommended_use":  "primary AI lookup layer for ordinary chart-position use and match starts"
+                                          }
+                                      ]
+                     }
+                 ],
+    "large_dataset_policy":  "Full historical ranges should be published outside the default branch, for example in data-only repositories, releases, or static object storage."
 }
