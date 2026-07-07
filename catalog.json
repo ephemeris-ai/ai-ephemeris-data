@@ -1,98 +1,121 @@
-{
-  "schema_version": "1.0",
-  "project": "ai-ephemeris-data",
-  "purpose": "AI-readable static ephemeris dataset catalog",
-  "lookup_rule": "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then follow that dataset storage rule. Example files may be direct daily JSONL/GZIP files; generated ranges may use monthly ZIP archives containing daily JSONL/GZIP files.",
-  "coordinate_model": {
-    "time_scale": "UTC input, Julian Day UT output",
-    "frame": "geocentric",
-    "zodiac": "tropical",
-    "coordinates": "ecliptic",
-    "longitude_unit": "degrees",
-    "position_type": "apparent",
-    "ayanamsa": null,
-    "location_dependent_values": false
-  },
-  "recommended_cadence_policy": [
-    {
-      "cadence": "60min",
-      "status": "compact orientation layer",
-      "use": "broad daily overview and coarse scans"
-    },
-    {
-      "cadence": "10min",
-      "status": "primary AI lookup layer",
-      "use": "ordinary chart-position lookup and match start windows"
-    },
-    {
-      "cadence": "1min",
-      "status": "planned optional high-resolution layer",
-      "use": "exact-time match windows and final checks"
-    }
-  ],
-  "planned_extensions": [
-    "daily aspect event files",
-    "match-window helper examples",
-    "larger generated historical ranges outside the default branch"
-  ],
-  "datasets": [
-    {
-      "id": "examples-main",
-      "status": "examples",
-      "description": "Small default-branch example dataset. Full generated ranges are listed as separate catalog entries when available.",
-      "repository": "https://github.com/ephemeris-ai/ai-ephemeris-data",
-      "index_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
-      "pages_index_url": "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
-      "base_url": "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
-      "date_range": {
-        "start": "2026-01-01",
-        "end": "2026-01-01"
-      },
-      "cadences": [
-        {
-          "cadence": "10min",
-          "date_range": {
-            "start": "2026-01-01",
-            "end": "2026-01-01"
-          },
-          "recommended_use": "single-day example file"
-        },
-        {
-          "cadence": "60min",
-          "date_range": {
-            "start": "2026-01-01",
-            "end": "2026-01-01"
-          },
-          "recommended_use": "single-day compact example file"
-        }
-      ]
-    },
-    {
-      "id": "10min-2020-2030",
-      "status": "generated",
-      "description": "Generated 10-minute ephemeris dataset for 2020-01-01 through 2030-12-31 UTC, stored on Hugging Face as monthly ZIP archives.",
-      "repository": "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data",
-      "storage": "monthly_zip_archives",
-      "index_url": "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2020-2030/index.json",
-      "monthly_index_url": "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2020-2030/monthly_index.json",
-      "base_url": "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/",
-      "date_range": {
-        "start": "2020-01-01",
-        "end": "2030-12-31"
-      },
-      "cadences": [
-        {
-          "cadence": "10min",
-          "date_range": {
-            "start": "2020-01-01",
-            "end": "2030-12-31"
-          },
-          "recommended_use": "primary AI lookup layer for ordinary chart-position use and match starts",
-          "lookup_rule": "Open monthly_index.json, download the matching monthly ZIP, then read the requested YYYY-MM-DD.jsonl.gz file inside it."
-        }
-      ],
-      "mirror_note": "An earlier GitHub data branch may exist as a legacy mirror, but Hugging Face is the preferred data endpoint for generated ranges."
-    }
-  ],
-  "large_dataset_policy": "Full generated ranges are published outside the default branch. The preferred public data channel is the Hugging Face dataset using monthly ZIP archives to avoid thousands of tiny LFS objects."
+﻿{
+    "schema_version":  "1.0",
+    "project":  "ai-ephemeris-data",
+    "purpose":  "AI-readable static ephemeris dataset catalog",
+    "lookup_rule":  "Read this catalog first, choose the dataset covering the requested UTC date and cadence, then follow that dataset storage rule. Example files may be direct daily JSONL/GZIP files; generated ranges may use monthly ZIP archives containing daily JSONL/GZIP files.",
+    "coordinate_model":  {
+                             "time_scale":  "UTC input, Julian Day UT output",
+                             "frame":  "geocentric",
+                             "zodiac":  "tropical",
+                             "coordinates":  "ecliptic",
+                             "longitude_unit":  "degrees",
+                             "position_type":  "apparent",
+                             "ayanamsa":  null,
+                             "location_dependent_values":  false
+                         },
+    "recommended_cadence_policy":  [
+                                       {
+                                           "cadence":  "60min",
+                                           "status":  "compact orientation layer",
+                                           "use":  "broad daily overview and coarse scans"
+                                       },
+                                       {
+                                           "cadence":  "10min",
+                                           "status":  "primary AI lookup layer",
+                                           "use":  "ordinary chart-position lookup and match start windows"
+                                       },
+                                       {
+                                           "cadence":  "1min",
+                                           "status":  "planned optional high-resolution layer",
+                                           "use":  "exact-time match windows and final checks"
+                                       }
+                                   ],
+    "planned_extensions":  [
+                               "daily aspect event files",
+                               "match-window helper examples",
+                               "larger generated historical ranges outside the default branch"
+                           ],
+    "datasets":  [
+                     {
+                         "id":  "10min-2020-2030",
+                         "status":  "generated",
+                         "description":  "Generated 10-minute ephemeris dataset for 2020-01-01 through 2030-12-31 UTC, stored on Hugging Face as monthly ZIP archives.",
+                         "repository":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data",
+                         "storage":  "monthly_zip_archives",
+                         "index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2020-2030/index.json",
+                         "monthly_index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2020-2030/monthly_index.json",
+                         "base_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/",
+                         "date_range":  {
+                                            "start":  "2020-01-01",
+                                            "end":  "2030-12-31"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2020-01-01",
+                                                                 "end":  "2030-12-31"
+                                                             },
+                                              "recommended_use":  "primary AI lookup layer for ordinary chart-position use and match starts",
+                                              "lookup_rule":  "Open monthly_index.json, download the matching monthly ZIP, then read the requested YYYY-MM-DD.jsonl.gz file inside it."
+                                          }
+                                      ],
+                         "mirror_note":  "An earlier GitHub data branch may exist as a legacy mirror, but Hugging Face is the preferred data endpoint for generated ranges."
+                     },
+                     {
+                         "id":  "examples-main",
+                         "status":  "examples",
+                         "description":  "Small default-branch example dataset. Full generated ranges are listed as separate catalog entries when available.",
+                         "repository":  "https://github.com/ephemeris-ai/ai-ephemeris-data",
+                         "index_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/index.json",
+                         "pages_index_url":  "https://ephemeris-ai.github.io/ai-ephemeris-data/index.json",
+                         "base_url":  "https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/",
+                         "date_range":  {
+                                            "start":  "2026-01-01",
+                                            "end":  "2026-01-01"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2026-01-01",
+                                                                 "end":  "2026-01-01"
+                                                             },
+                                              "recommended_use":  "single-day example file"
+                                          },
+                                          {
+                                              "cadence":  "60min",
+                                              "date_range":  {
+                                                                 "start":  "2026-01-01",
+                                                                 "end":  "2026-01-01"
+                                                             },
+                                              "recommended_use":  "single-day compact example file"
+                                          }
+                                      ]
+                     },
+                     {
+                         "id":  "10min-2000-2019",
+                         "status":  "generated",
+                         "repository":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data",
+                         "storage":  "monthly_zip_archives",
+                         "index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/index.json",
+                         "monthly_index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/monthly_index.json",
+                         "base_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/",
+                         "date_range":  {
+                                            "start":  "2000-01-01",
+                                            "end":  "2019-12-31"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2000-01-01",
+                                                                 "end":  "2019-12-31"
+                                                             },
+                                              "recommended_use":  "primary AI lookup layer for ordinary chart-position use and match starts"
+                                          }
+                                      ]
+                     }
+                 ],
+    "large_dataset_policy":  "Full generated ranges are published outside the default branch. The preferred public data channel is the Hugging Face dataset using monthly ZIP archives to avoid thousands of tiny LFS objects."
 }
