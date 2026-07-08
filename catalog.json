@@ -37,6 +37,29 @@
                            ],
     "datasets":  [
                      {
+                         "id":  "10min-2000-2019",
+                         "status":  "generated",
+                         "repository":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data",
+                         "storage":  "monthly_zip_archives",
+                         "index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/index.json",
+                         "monthly_index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/monthly_index.json",
+                         "base_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/",
+                         "date_range":  {
+                                            "start":  "2000-01-01",
+                                            "end":  "2019-12-31"
+                                        },
+                         "cadences":  [
+                                          {
+                                              "cadence":  "10min",
+                                              "date_range":  {
+                                                                 "start":  "2000-01-01",
+                                                                 "end":  "2019-12-31"
+                                                             },
+                                              "recommended_use":  "primary AI lookup layer for ordinary chart-position use and match starts"
+                                          }
+                                      ]
+                     },
+                     {
                          "id":  "10min-2020-2030",
                          "status":  "generated",
                          "description":  "Generated 10-minute ephemeris dataset for 2020-01-01 through 2030-12-31 UTC, stored on Hugging Face as monthly ZIP archives.",
@@ -94,23 +117,24 @@
                                       ]
                      },
                      {
-                         "id":  "10min-2000-2019",
+                         "id":  "10min-1950-1999",
                          "status":  "generated",
+                         "description":  "Generated 10-minute ephemeris dataset for 1950-01-01 through 1999-12-31 UTC, stored as monthly ZIP archives.",
                          "repository":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data",
-                         "storage":  "monthly_zip_archives",
-                         "index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/index.json",
-                         "monthly_index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-2000-2019/monthly_index.json",
+                         "index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-1950-1999/index.json",
+                         "monthly_index_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/datasets/10min-1950-1999/monthly_index.json",
                          "base_url":  "https://huggingface.co/datasets/ephemeris-ai/ai-ephemeris-data/raw/main/",
+                         "storage":  "monthly_zip_archives",
                          "date_range":  {
-                                            "start":  "2000-01-01",
-                                            "end":  "2019-12-31"
+                                            "start":  "1950-01-01",
+                                            "end":  "1999-12-31"
                                         },
                          "cadences":  [
                                           {
                                               "cadence":  "10min",
                                               "date_range":  {
-                                                                 "start":  "2000-01-01",
-                                                                 "end":  "2019-12-31"
+                                                                 "start":  "1950-01-01",
+                                                                 "end":  "1999-12-31"
                                                              },
                                               "recommended_use":  "primary AI lookup layer for ordinary chart-position use and match starts"
                                           }
