@@ -37,9 +37,6 @@ data/
   10min/
     2026/
       2026-01-01.jsonl.gz
-  60min/
-    2026/
-      2026-01-01.jsonl.gz
 ```
 
 Each line contains one UTC timestamp and all configured bodies for that timestamp.
@@ -59,15 +56,15 @@ datasets/10min-2020-2030/monthly/2026/2026-07.zip
 For generated ranges, read the dataset `monthly_index.json`, download the
 matching monthly archive, then open the daily file inside it.
 
-The current `main` branch contains two example files:
+The current `main` branch contains one example file:
 
 ```text
 data/10min/2026/2026-01-01.jsonl.gz
-data/60min/2026/2026-01-01.jsonl.gz
 ```
 
-- `10min` demonstrates the preferred AI lookup layer for ordinary chart-position use.
-- `60min` demonstrates a compact orientation layer for broad lookup and coarse scans.
+`10min` is the preferred AI lookup layer for ordinary chart-position use and
+match/event start lookup. Coarser hourly scans can be derived by sampling every
+sixth row from the `10min` data.
 
 The full generated ranges are intentionally kept out of `main`. Generate broader
 ranges outside the repository, or publish them through a dedicated data channel.
@@ -84,7 +81,6 @@ The default coordinate model is:
 
 Recommended cadence policy:
 
-- `60min`: compact orientation layer for broad scans.
 - `10min`: primary AI lookup layer for ordinary chart-position use and match starts.
 - `1min`: planned optional high-resolution layer for exact event windows.
 

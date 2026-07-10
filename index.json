@@ -1,237 +1,217 @@
 {
-    "dataset": "ai-ephemeris-data",
-    "version": "0.1-preview",
-    "status": "examples",
-    "record_schema": "schema.json",
+  "dataset": "ai-ephemeris-data",
+  "version": "0.1-preview",
+  "status": "examples",
+  "record_schema": "schema.json",
+  "time_scale": "UTC input, Julian Day UT output",
+  "coordinate_system": {
+    "frame": "geocentric",
+    "zodiac": "tropical",
+    "coordinates": "ecliptic",
+    "longitude_unit": "degrees",
+    "position_type": "apparent"
+  },
+  "source": {
+    "ephemeris_source": "Swiss Ephemeris compatible calculations",
+    "runtime": "swetest.php preview runtime",
+    "zodiac": "tropical",
+    "ayanamsa": null,
+    "frame": "geocentric",
+    "coordinates": "ecliptic",
+    "position_type": "apparent",
     "time_scale": "UTC input, Julian Day UT output",
-    "coordinate_system": {
-        "frame": "geocentric",
-        "zodiac": "tropical",
-        "coordinates": "ecliptic",
-        "longitude_unit": "degrees",
-        "position_type": "apparent"
+    "node_codes": {
+      "Nn": "mean North Node",
+      "Nt": "true North Node"
     },
-    "source": {
-        "ephemeris_source": "Swiss Ephemeris compatible calculations",
-        "runtime": "swetest.php preview runtime",
-        "zodiac": "tropical",
-        "ayanamsa": null,
-        "frame": "geocentric",
-        "coordinates": "ecliptic",
-        "position_type": "apparent",
-        "time_scale": "UTC input, Julian Day UT output",
-        "node_codes": {
-            "Nn": "mean North Node",
-            "Nt": "true North Node"
-        },
-        "lilith_codes": {
-            "Ll": "mean lunar apogee / mean Lilith",
-            "Lt": "osculating lunar apogee / true Lilith"
-        },
-        "special_points": {
-            "Wa": "Waldemath",
-            "Se": "Selena / White Moon"
-        }
+    "lilith_codes": {
+      "Ll": "mean lunar apogee / mean Lilith",
+      "Lt": "osculating lunar apogee / true Lilith"
     },
-    "bodies": [
-        {
-            "code": "So",
-            "name": "Sun"
-        },
-        {
-            "code": "Mo",
-            "name": "Moon"
-        },
-        {
-            "code": "Me",
-            "name": "Mercury"
-        },
-        {
-            "code": "Ve",
-            "name": "Venus"
-        },
-        {
-            "code": "Ma",
-            "name": "Mars"
-        },
-        {
-            "code": "Ju",
-            "name": "Jupiter"
-        },
-        {
-            "code": "Sa",
-            "name": "Saturn"
-        },
-        {
-            "code": "Ur",
-            "name": "Uranus"
-        },
-        {
-            "code": "Ne",
-            "name": "Neptune"
-        },
-        {
-            "code": "Pl",
-            "name": "Pluto"
-        },
-        {
-            "code": "Nn",
-            "name": "mean North Node"
-        },
-        {
-            "code": "Nt",
-            "name": "true North Node"
-        },
-        {
-            "code": "Ll",
-            "name": "mean Lilith / mean lunar apogee"
-        },
-        {
-            "code": "Lt",
-            "name": "true Lilith / osculating lunar apogee"
-        },
-        {
-            "code": "Ch",
-            "name": "Chiron"
-        },
-        {
-            "code": "Ph",
-            "name": "Pholus"
-        },
-        {
-            "code": "Ce",
-            "name": "Ceres"
-        },
-        {
-            "code": "Pa",
-            "name": "Pallas"
-        },
-        {
-            "code": "Jo",
-            "name": "Juno"
-        },
-        {
-            "code": "Va",
-            "name": "Vesta"
-        },
-        {
-            "code": "Wa",
-            "name": "Waldemath"
-        },
-        {
-            "code": "Se",
-            "name": "Selena / White Moon"
-        }
-    ],
-    "signs": [
-        {
-            "index": 1,
-            "code": "Ar",
-            "name": "Aries"
-        },
-        {
-            "index": 2,
-            "code": "Ta",
-            "name": "Taurus"
-        },
-        {
-            "index": 3,
-            "code": "Ge",
-            "name": "Gemini"
-        },
-        {
-            "index": 4,
-            "code": "Cn",
-            "name": "Cancer"
-        },
-        {
-            "index": 5,
-            "code": "Le",
-            "name": "Leo"
-        },
-        {
-            "index": 6,
-            "code": "Vi",
-            "name": "Virgo"
-        },
-        {
-            "index": 7,
-            "code": "Li",
-            "name": "Libra"
-        },
-        {
-            "index": 8,
-            "code": "Sc",
-            "name": "Scorpio"
-        },
-        {
-            "index": 9,
-            "code": "Sg",
-            "name": "Sagittarius"
-        },
-        {
-            "index": 10,
-            "code": "Cp",
-            "name": "Capricorn"
-        },
-        {
-            "index": 11,
-            "code": "Aq",
-            "name": "Aquarius"
-        },
-        {
-            "index": 12,
-            "code": "Pi",
-            "name": "Pisces"
-        }
-    ],
-    "files": [
-        {
-            "cadence": "10min",
-            "year": 2026,
-            "date": "2026-01-01",
-            "path": "data/10min/2026/2026-01-01.jsonl.gz",
-            "compression": "gzip",
-            "records": 144,
-            "step_minutes": 10
-        },
-        {
-            "cadence": "60min",
-            "year": 2026,
-            "date": "2026-01-01",
-            "path": "data/60min/2026/2026-01-01.jsonl.gz",
-            "compression": "gzip",
-            "records": 24,
-            "step_minutes": 60
-        }
-    ],
-    "date_range": {
+    "special_points": {
+      "Wa": "Waldemath",
+      "Se": "Selena / White Moon"
+    }
+  },
+  "bodies": [
+    {
+      "code": "So",
+      "name": "Sun"
+    },
+    {
+      "code": "Mo",
+      "name": "Moon"
+    },
+    {
+      "code": "Me",
+      "name": "Mercury"
+    },
+    {
+      "code": "Ve",
+      "name": "Venus"
+    },
+    {
+      "code": "Ma",
+      "name": "Mars"
+    },
+    {
+      "code": "Ju",
+      "name": "Jupiter"
+    },
+    {
+      "code": "Sa",
+      "name": "Saturn"
+    },
+    {
+      "code": "Ur",
+      "name": "Uranus"
+    },
+    {
+      "code": "Ne",
+      "name": "Neptune"
+    },
+    {
+      "code": "Pl",
+      "name": "Pluto"
+    },
+    {
+      "code": "Nn",
+      "name": "mean North Node"
+    },
+    {
+      "code": "Nt",
+      "name": "true North Node"
+    },
+    {
+      "code": "Ll",
+      "name": "mean Lilith / mean lunar apogee"
+    },
+    {
+      "code": "Lt",
+      "name": "true Lilith / osculating lunar apogee"
+    },
+    {
+      "code": "Ch",
+      "name": "Chiron"
+    },
+    {
+      "code": "Ph",
+      "name": "Pholus"
+    },
+    {
+      "code": "Ce",
+      "name": "Ceres"
+    },
+    {
+      "code": "Pa",
+      "name": "Pallas"
+    },
+    {
+      "code": "Jo",
+      "name": "Juno"
+    },
+    {
+      "code": "Va",
+      "name": "Vesta"
+    },
+    {
+      "code": "Wa",
+      "name": "Waldemath"
+    },
+    {
+      "code": "Se",
+      "name": "Selena / White Moon"
+    }
+  ],
+  "signs": [
+    {
+      "index": 1,
+      "code": "Ar",
+      "name": "Aries"
+    },
+    {
+      "index": 2,
+      "code": "Ta",
+      "name": "Taurus"
+    },
+    {
+      "index": 3,
+      "code": "Ge",
+      "name": "Gemini"
+    },
+    {
+      "index": 4,
+      "code": "Cn",
+      "name": "Cancer"
+    },
+    {
+      "index": 5,
+      "code": "Le",
+      "name": "Leo"
+    },
+    {
+      "index": 6,
+      "code": "Vi",
+      "name": "Virgo"
+    },
+    {
+      "index": 7,
+      "code": "Li",
+      "name": "Libra"
+    },
+    {
+      "index": 8,
+      "code": "Sc",
+      "name": "Scorpio"
+    },
+    {
+      "index": 9,
+      "code": "Sg",
+      "name": "Sagittarius"
+    },
+    {
+      "index": 10,
+      "code": "Cp",
+      "name": "Capricorn"
+    },
+    {
+      "index": 11,
+      "code": "Aq",
+      "name": "Aquarius"
+    },
+    {
+      "index": 12,
+      "code": "Pi",
+      "name": "Pisces"
+    }
+  ],
+  "files": [
+    {
+      "cadence": "10min",
+      "year": 2026,
+      "date": "2026-01-01",
+      "path": "data/10min/2026/2026-01-01.jsonl.gz",
+      "compression": "gzip",
+      "records": 144,
+      "step_minutes": 10
+    }
+  ],
+  "date_range": {
+    "start": "2026-01-01",
+    "end": "2026-01-01"
+  },
+  "file_count": 1,
+  "cadences": [
+    {
+      "cadence": "10min",
+      "step_minutes": 10,
+      "records_per_day": 144,
+      "date_range": {
         "start": "2026-01-01",
         "end": "2026-01-01"
-    },
-    "file_count": 2,
-    "cadences": [
-        {
-            "cadence": "10min",
-            "step_minutes": 10,
-            "records_per_day": 144,
-            "date_range": {
-                "start": "2026-01-01",
-                "end": "2026-01-01"
-            },
-            "file_count": 1,
-            "recommended_use": "recommended for AI horoscope lookup and ordinary chart-position use"
-        },
-        {
-            "cadence": "60min",
-            "step_minutes": 60,
-            "records_per_day": 24,
-            "date_range": {
-                "start": "2026-01-01",
-                "end": "2026-01-01"
-            },
-            "file_count": 1,
-            "recommended_use": "compact orientation layer for broad lookup and coarse scans"
-        }
-    ]
+      },
+      "file_count": 1,
+      "recommended_use": "recommended for AI horoscope lookup and ordinary chart-position use"
+    }
+  ]
 }

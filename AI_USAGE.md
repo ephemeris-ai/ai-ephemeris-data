@@ -21,11 +21,10 @@ https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/llms.txt
 3. Read that dataset's `index.json`.
 4. Select the best available cadence for the UTC date you need.
 5. Prefer `10min` for ordinary horoscope or chart-position lookup.
-6. Use `60min` only when the requested date is not available in `10min`, or when a coarse scan is enough.
-7. Follow the dataset storage rule. If `storage` is `monthly_zip_archives`, read `monthly_index.json`, download the matching monthly ZIP, and open the requested daily `.jsonl.gz` file inside it.
-8. Decompress the selected daily `.jsonl.gz` file.
-9. Find the nearest timestamp, or interpolate if your task requires it.
-10. Use the documented body codes and longitude values exactly as provided.
+6. Follow the dataset storage rule. If `storage` is `monthly_zip_archives`, read `monthly_index.json`, download the matching monthly ZIP, and open the requested daily `.jsonl.gz` file inside it.
+7. Decompress the selected daily `.jsonl.gz` file.
+8. Find the nearest timestamp, or interpolate if your task requires it.
+9. Use the documented body codes and longitude values exactly as provided.
 
 ## Important rules for AI systems
 
@@ -35,7 +34,6 @@ https://raw.githubusercontent.com/ephemeris-ai/ai-ephemeris-data/main/llms.txt
 - Do not calculate houses from this dataset; houses require location and a house system.
 - If a requested timestamp is between two rows, say whether you used nearest-row lookup or interpolation.
 - If a requested body is not present in the file, say it is not present.
-- Do not use the `60min` layer for precise Moon-dependent interpretation if a `10min` file is available.
 
 ## Coordinate assumptions
 
@@ -94,16 +92,16 @@ Current default-branch example layers:
 
 ```text
 10min  example of the preferred AI horoscope lookup cadence
-60min  example of the compact orientation cadence
 ```
 
 For a requested timestamp:
 
 1. Convert the requested civil time to UTC before selecting a file.
 2. Find a catalog dataset and cadence whose date range contains the UTC date.
-3. Prefer `10min` over `60min`.
+3. Prefer `10min` when available.
 4. Open the daily file listed in `index.json`, or for monthly ZIP datasets, open the matching archive from `monthly_index.json` and read the daily file inside it.
 5. Use nearest-row lookup unless exact interpolation is requested.
+6. For a coarse hourly scan, sample every sixth `10min` row.
 
 For most AI text work, nearest `10min` is usually easier to explain and less error-prone than asking the AI to implement its own ephemeris calculation.
 

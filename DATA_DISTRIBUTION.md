@@ -32,7 +32,6 @@ main branch:
   generator/
   schema/
   data/10min/2026/2026-01-01.jsonl.gz   example only
-  data/60min/2026/2026-01-01.jsonl.gz   compact example only
 ```
 
 Generate full datasets outside the repository:
@@ -80,9 +79,11 @@ only the month needed for a requested date.
 
 ## Suggested cadence policy
 
-- `60min`: useful as a compact broad-range orientation layer.
-- `10min`: useful for ordinary chart-position lookup.
+- `10min`: primary layer for ordinary chart-position lookup and event starts.
+- `1min`: optional high-resolution layer only when there is a clear exact-window use case.
 - `2min` or finer: publish only when there is a clear use case, because size grows quickly.
+
+For broad hourly scans, sample every sixth row from `10min` data.
 
 For AI lookup, daily `.jsonl.gz` records remain the internal unit. For public
 large-range distribution, package those daily files into monthly ZIP archives.

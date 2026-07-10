@@ -31,9 +31,10 @@ does not currently contain that date/cadence.
 
 ## Cadence recommendations
 
-- `60min`: broad daily orientation.
 - `10min`: ordinary match-start and event-start lookup.
 - `1min`: planned optional high-resolution layer for exact event windows.
+
+For a broad hourly orientation, sample every sixth row from the `10min` data.
 
 ## Event windows
 

@@ -41,8 +41,8 @@ function ai_ephem_index_recommended_use(string $cadence, ?int $step): string
     if ($step === 10) {
         return 'recommended for AI horoscope lookup and ordinary chart-position use';
     }
-    if ($step === 60) {
-        return 'compact orientation layer for broad lookup and coarse scans';
+    if ($step !== null && $step > 10) {
+        return 'coarse custom cadence layer';
     }
     return 'special cadence layer';
 }

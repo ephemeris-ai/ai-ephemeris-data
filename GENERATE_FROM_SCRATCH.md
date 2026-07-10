@@ -108,21 +108,19 @@ php generator/read_example.php data/10min/2026/2026-01-01.jsonl.gz 1
 
 ## 6. Generate a larger range
 
-For a month or year, start with a coarse step first:
-
-```bash
-php generator/generate.php --year=2026 --step=60
-```
-
-This writes files under `data/60min/`.
-
-For a finer AI lookup layer, generate a smaller test range first:
+For a month or year, start with a small `10min` range first:
 
 ```bash
 php generator/generate.php --month=2026-01 --step=10
 ```
 
 This writes files under `data/10min/`.
+
+After that validates cleanly, expand the same cadence to a year:
+
+```bash
+php generator/generate.php --year=2026 --step=10
+```
 
 For broad fine-cadence ranges, write outside this repository so the default
 branch remains small:
@@ -137,7 +135,7 @@ After generation, rebuild the dataset index:
 php generator/build_index.php
 ```
 
-Only after validation should you generate a broader fine cadence such as 10, 5, or 2 minutes.
+Only after validation should you generate broader or finer cadences such as 5, 2, or 1 minute.
 
 ## 7. Notes for AI agents
 

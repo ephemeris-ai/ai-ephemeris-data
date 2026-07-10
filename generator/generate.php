@@ -318,9 +318,9 @@ $config = ai_ephem_config();
 
 if (isset($args['help'])) {
     echo "Usage:\n";
-    echo "  php generator/generate.php --date=2026-01-01 --step=60\n";
+    echo "  php generator/generate.php --date=2026-01-01 --step=10\n";
     echo "  php generator/generate.php --month=2026-01 --step=10\n";
-    echo "  php generator/generate.php --year=2026 --step=60\n";
+    echo "  php generator/generate.php --year=2026 --step=10\n";
     echo "  php generator/generate.php --month=2026-01 --step=10 --cadence=10min\n";
     echo "  php generator/generate.php --year=2026 --step=10 --output-dir=../ai-ephemeris-output/data\n";
     exit(0);

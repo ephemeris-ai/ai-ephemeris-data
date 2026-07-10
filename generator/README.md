@@ -56,7 +56,7 @@ php generator/generate.php --date=2026-01-01 --step=10
 ## Generate one year
 
 ```bash
-php generator/generate.php --year=2026 --step=60
+php generator/generate.php --year=2026 --step=10
 ```
 
 For broad ranges, write outside the repository so the default branch stays small:
@@ -69,7 +69,6 @@ Output is written under a cadence directory:
 
 ```text
 data/10min/2026/2026-01-01.jsonl.gz
-data/60min/2026/2026-01-01.jsonl.gz
 ```
 
 For a first public release, generate a small test range first, validate it, and only then generate a full year.
