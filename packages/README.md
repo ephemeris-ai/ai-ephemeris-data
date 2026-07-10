@@ -5,14 +5,19 @@ Optional helper ZIP packages can be placed here during local testing, or uploade
 Current preview package:
 
 ```text
-swetest-php-0.1.2-preview.zip
+swetest-php-0.1.3-preview.zip
 ```
 
 SHA-256:
 
 ```text
-CEEAA164DCF7B9E305A0354DACEA575F8C97F3D3CC5B70BABFA552FB6423D7EE
+E3938C5C9F291D1BBB90054BDA1508AB9CE3BFC9D1A2BB151A938CB6E6B193EE
 ```
+
+Runtime 0.1.3-preview (2026-07-10) includes fixes from an independent audit of
+the PHP port against the Swiss Ephemeris 2.10.03 C sources, verified against
+the official `swetest` 2.10.03 binary. See `CHANGELOG.md` inside the package
+and the "Data revision notes" section in the repository README.
 
 Before publishing a package:
 

@@ -45,6 +45,16 @@ Unless a file explicitly says otherwise, records use:
 - tropical zodiac,
 - degrees normalized to 0 <= longitude < 360.
 
+## Known data notes
+
+- In ranges generated before 2026-07-10 (all currently published 10min
+  ranges), `distance_au` of the lunar points is a placeholder: `Nn`, `Nt`,
+  and `Lt` have `distance_au = 0.0` and `Ll` has the constant `0.002712`.
+  Treat these values as informational only; longitudes, latitudes, speeds,
+  signs, and retrograde flags are unaffected. Ranges generated with runtime
+  0.1.3-preview or newer contain real distances for these points. See
+  "Data revision notes" in the repository README.
+
 ## Minimal lookup example
 
 If the requested time is:

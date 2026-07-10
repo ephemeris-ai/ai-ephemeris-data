@@ -30,6 +30,14 @@
     "match-window helper examples",
     "larger generated historical ranges outside the default branch"
   ],
+  "data_revision_notes": [
+    {
+      "date": "2026-07-10",
+      "id": "runtime-0.1.3-distance-fix",
+      "applies_to": "all 10min ranges generated before 2026-07-10",
+      "note": "Files were generated with runtime <= swetest-php-0.1.2-preview. In those files distance_au of the lunar points is a placeholder: Nn, Nt, Lt have distance_au = 0.0 and Ll has the constant 0.002712. Runtime 0.1.3-preview (audited against the Swiss Ephemeris 2.10.03 C sources and verified against the official swetest binary) returns real distances for these points. Longitudes, latitudes, speeds, signs, and retrograde flags agree within 0.0005 arcsec and are unaffected. The published ranges are intentionally not regenerated; treat lunar-point distance_au as informational only."
+    }
+  ],
   "datasets": [
     {
       "id": "10min-1950-1999",

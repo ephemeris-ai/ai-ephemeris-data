@@ -126,7 +126,7 @@ It expects:
 The preview runtime package is available in:
 
 ```text
-packages/swetest-php-0.1.2-preview.zip
+packages/swetest-php-0.1.3-preview.zip
 ```
 
 The `.se1` files are not included in this repository. For dates around 2026 and the default body set, start with:
@@ -161,6 +161,35 @@ generator/config.local.php
 ```
 
 and set local paths there. The local config file is ignored by Git.
+
+## Data revision notes
+
+### 2026-07-10 runtime fix (swetest-php 0.1.3-preview)
+
+The pure-PHP runtime went through an independent audit against the Swiss
+Ephemeris 2.10.03 C sources and a numeric verification against the official
+`swetest` 2.10.03 binary. The audit was carried out with Claude (Anthropic)
+under the project author's direction. Runtime 0.1.3-preview contains the
+resulting fixes; see `CHANGELOG.md` inside the runtime package.
+
+All currently generated 10min ranges (1900-1949, 1950-1999, 2000-2019,
+2020-2030, 2031-2050) were produced with runtime <= 0.1.2-preview and are
+intentionally **not** regenerated, because the differences are far below the
+practical resolution of this dataset:
+
+- Longitudes, latitudes, and speeds from runtime 0.1.3 agree with the
+  published files within 0.0005 arcsec (only the 8th decimal of a degree can
+  differ). Zodiac signs and retrograde flags are unaffected.
+- The only visible difference is `distance_au` of the lunar points in the
+  published files: `Nn`, `Nt`, and `Lt` have `distance_au = 0.0`, and `Ll`
+  has the constant `0.002712`. Runtime 0.1.3 returns real distances instead
+  (`Nn` constant `0.0025695553`, `Ll` constant `0.0027106251`, `Nt`/`Lt`
+  time-varying around `0.0024`-`0.0028`).
+
+Consumers should treat `distance_au` of the lunar nodes and apogees in the
+published ranges as informational only. Ranges generated after 2026-07-10
+will contain the real distance values; this note is the intended explanation
+for the mixed behaviour.
 
 ## AI usage
 

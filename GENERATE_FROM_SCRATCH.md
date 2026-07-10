@@ -20,13 +20,13 @@ From the repository root:
 
 ```bash
 mkdir runtime
-unzip packages/swetest-php-0.1.2-preview.zip -d runtime
+unzip packages/swetest-php-0.1.3-preview.zip -d runtime
 ```
 
 The runtime path used by the generator will then be:
 
 ```text
-runtime/swetest-php-0.1.2-preview/src/swetest.php
+runtime/swetest-php-0.1.3-preview/src/swetest.php
 ```
 
 ## 3. Download the required `.se1` files
@@ -81,7 +81,7 @@ Example local config:
 declare(strict_types=1);
 
 return [
-    'swetest_php' => dirname(__DIR__) . '/runtime/swetest-php-0.1.2-preview/src/swetest.php',
+    'swetest_php' => dirname(__DIR__) . '/runtime/swetest-php-0.1.3-preview/src/swetest.php',
     'ephemeris_dir' => dirname(__DIR__) . '/ephe',
 ];
 ```
@@ -136,6 +136,13 @@ php generator/build_index.php
 ```
 
 Only after validation should you generate broader or finer cadences such as 5, 2, or 1 minute.
+
+Reproducibility note: files regenerated with runtime 0.1.3-preview or newer
+are not byte-identical to the ranges published before 2026-07-10. Longitudes,
+latitudes, and speeds may differ in the 8th decimal of a degree (<= 0.0005
+arcsec), and `distance_au` of `Nn`, `Nt`, `Ll`, and `Lt` now contains real
+values instead of `0.0` / constant `0.002712`. See "Data revision notes" in
+the repository README.
 
 ## 7. Notes for AI agents
 

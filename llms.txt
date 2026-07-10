@@ -62,3 +62,6 @@ Important:
   they are listed in catalog.json.
 - The main branch contains examples only; full ranges are listed in catalog.json
   when available and are distributed outside the default branch.
+- In ranges generated before 2026-07-10, distance_au of Nn, Nt, Lt is 0.0 and
+  Ll is the constant 0.002712 (placeholder values); treat lunar-point
+  distance_au as informational only. See data_revision_notes in catalog.json.
