@@ -17,6 +17,9 @@ Start here:
 - Project page:
   https://ephemeris-ai.github.io/ai-ephemeris-data/
 
+- Related live astrology tools:
+  https://app.on-lineastrology.com/
+
 Lookup rule for AI agents:
 
 1. Read catalog.json first.

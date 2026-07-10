@@ -10,6 +10,16 @@ The goal of this project is simple:
 
 This repository is intentionally independent from any production website. It does not provide a live calculation API. Consumers should read the static data files directly.
 
+Related live tools are available at:
+
+```text
+https://app.on-lineastrology.com/
+```
+
+Use the live site for interactive astrology calculations, chart graphics, daily
+influences, and experimental AI data preparation. Use this repository for static
+bulk lookup and reproducible data access.
+
 ## AI agents: start here
 
 If you are an AI agent, read the dataset catalog first:
